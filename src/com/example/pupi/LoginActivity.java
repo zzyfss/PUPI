@@ -8,6 +8,7 @@ import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
 public class LoginActivity extends Activity {
@@ -17,7 +18,9 @@ public class LoginActivity extends Activity {
 	private Button btn_signUp;
 	private Button btn_signIn;
 	private TextView txt_error;
-
+	private EditText edit_userName;
+	private EditText edit_pwd;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -27,6 +30,9 @@ public class LoginActivity extends Activity {
 		mContainerView = (ViewGroup) findViewById(R.id.hidenContainer);
 		btn_signIn = (Button)findViewById(R.id.btn_signIn);
 		btn_signUp = (Button)findViewById(R.id.btn_signUp);
+		txt_error = (TextView)findViewById(R.id.txt_error);
+		edit_userName =(EditText)findViewById(R.id.editText_userName);
+		edit_pwd = (EditText)findViewById(R.id.editText_pwd);
 	}
 
 	@Override
@@ -39,9 +45,13 @@ public class LoginActivity extends Activity {
 	public void signIn(View view){
 		if(btn_signIn.getText().equals("Sign In")){
 			Intent intent = new Intent(this,MainActivity.class);
+			
+			// Connect to server
+			
 			startActivity(intent);
 			//overridePendingTransition(R.animator.card_flip_left_in, R.animator.card_flip_left_out);
-
+			
+			finish();
 		}
 		else{
 			btn_signIn.setText("Sign In");
@@ -58,6 +68,14 @@ public class LoginActivity extends Activity {
 			btn_signUp.setText("OK");
 		}
 		else{
+			// Check password field first
+			EditText edit_pwd_a =(EditText)mContainerView.findViewById(R.id.editText_pwd_again);
+			if(!edit_pwd_a.getText().equals(edit_pwd.getText())){
+				txt_error.setText("Two passwords don't match");
+				return;
+			}
+			
+			
 			// Connect to server
 			
 		}
