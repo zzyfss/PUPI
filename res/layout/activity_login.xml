@@ -1,0 +1,61 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <EditText
+        android:id="@+id/editText_userName"
+        android:layout_width="200dp"
+        android:layout_height="48dp"
+        android:layout_alignParentBottom="false"
+        android:layout_alignParentLeft="false"
+        android:layout_alignParentRight="false"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_centerInParent="true"
+        android:layout_centerVertical="false"
+        android:layout_marginTop="32dp"
+        android:hint="Email address:"
+        android:ems="10" >
+
+        <requestFocus />
+    </EditText>
+
+    <EditText
+        android:id="@+id/editText_pwd"
+        android:layout_width="200dp"
+        android:layout_height="48dp"
+        android:layout_alignLeft="@+id/editText_userName"
+        android:layout_below="@+id/editText_userName"
+        android:layout_marginTop="14dp"
+        android:ems="10"
+        android:hint="Password:"
+        android:inputType="textPassword" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/editText_pwd"
+        android:layout_below="@+id/editText_pwd"
+        android:layout_marginTop="14dp" >
+
+        <Button
+            android:id="@+id/btn_signIn"
+            style="@style/ButtonStyle"
+            android:layout_width="90dp"
+            android:layout_height="48dp"
+            android:onClick="signIn"
+            android:text="Sign In" />
+
+        <Button
+            android:id="@+id/btn_signUp"
+            style="@style/ButtonStyle"
+            android:layout_width="90dp"
+            android:layout_height="48dp"
+            android:layout_marginLeft="20dp"
+            android:text="Sign Up" />
+
+    </LinearLayout>
+
+</RelativeLayout>
