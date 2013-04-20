@@ -4,7 +4,9 @@ import android.app.ActionBar;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTabHost;
+import android.support.v4.app.FragmentTransaction;
 import android.view.Window;
+import android.widget.TabHost.OnTabChangeListener;
 
 /**
  * This demonstrates the use of action bar tabs and how they interact
@@ -19,7 +21,6 @@ public class MainActivity extends FragmentActivity {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_main);
         
-
         final ActionBar bar = getActionBar();
         if(bar!=null){
         	bar.setNavigationMode(ActionBar.NAVIGATION_MODE_STANDARD);
@@ -30,13 +31,14 @@ public class MainActivity extends FragmentActivity {
         mTabHost.setup(this, getSupportFragmentManager(), R.id.realtabcontent);
  
         mTabHost.addTab(mTabHost.newTabSpec("home").setIndicator("Home"),
-                MapDisplayFragment.class, null);
+                HomeFragment.class, null);
         mTabHost.addTab(mTabHost.newTabSpec("track").setIndicator("Track"),
                ListDisplayFragment.class, null);
         mTabHost.addTab(mTabHost.newTabSpec("account").setIndicator("Account"),
         		ListDisplayFragment.class, null);
 
     }
-
+    
+  
 
 }
