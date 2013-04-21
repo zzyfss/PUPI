@@ -1,11 +1,15 @@
 package com.example.pupi;
 
+
+import java.util.Date;
 import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
+
 
 public class PUPIPost {
 	private int post_id;
@@ -21,14 +25,34 @@ public class PUPIPost {
 	
 	//pull down
 	public PUPIPost(String string){
-		String[] array = string.split("*#xx#");
+		string = string.substring(4);
+		String[] array = string.split("####");
 		String[] keys = new String[array.length];
 		String[] values = new String[array.length];
+		
 		for(int i=0; i<array.length; i++){
-			String[] item = array[i].split(":");
-			keys[i] = item[0];
-			values[i] = item[1];
+			//System.out.println(array[i]);
+			int index = array[i].indexOf(":");
+			keys[i] = array[i].substring(0, index);
+			values[i] = array[i].substring(index+1, array[i].length());
 		}
+		poster = values[0];
+		helper = values[1];
+		location = values[2];
+		locx = Double.parseDouble(values[3]);
+		locy = Double.parseDouble(values[4]);
+		///////??? time string to Timestamp
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		Date date;
+		try{
+			date = sdf.parse(values[5]);
+			time = new Timestamp(date.getTime());
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		title = values[6];
+		content = values[7];
+		reward = values[8];
 	}
 	
 	
@@ -56,7 +80,7 @@ public class PUPIPost {
 		return locy;
 	}
 	
-	public Timestamp getTimestamp(){
+	public Timestamp getTime(){
 		return time;
 	}
 	
@@ -83,7 +107,6 @@ public class PUPIPost {
 		return nameValPair;
 	}
 	
-	
 	public void setPost_id(int post_id){
 		this.post_id = post_id;
 	}
@@ -108,8 +131,8 @@ public class PUPIPost {
 		this.locy = locy;
 	}
 	
-	public void setTimestamp(Timestamp timestamp){
-		this.time = timestamp;
+	public void setTime(Timestamp time){
+		this.time = time;
 	}
 	
 	public void setTitle(String title){
@@ -123,5 +146,6 @@ public class PUPIPost {
 	public void setReward(String reward){
 		this.reward = reward;
 	}
-
+	
 }
+
