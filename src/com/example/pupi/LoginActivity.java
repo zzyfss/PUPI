@@ -48,7 +48,7 @@ public class LoginActivity extends Activity {
 			
 			// Connect to server
 			
-			startActivity(intent);
+			startActivity(intent); 
 			//overridePendingTransition(R.animator.card_flip_left_in, R.animator.card_flip_left_out);
 			
 			finish();
@@ -70,11 +70,16 @@ public class LoginActivity extends Activity {
 		else{
 			// Check password field first
 			EditText edit_pwd_a =(EditText)mContainerView.findViewById(R.id.editText_pwd_again);
-			if(!edit_pwd_a.getText().equals(edit_pwd.getText())){
-				txt_error.setText("Passwords don't match.\nå");
+			String name=edit_userName.getText().toString();
+			String pwd = edit_pwd.getText().toString();
+			if(pwd.isEmpty() || name.isEmpty() ){
+				txt_error.setText("User Name or Password can't be empty.");
 				return;
 			}
-			
+			else if(!edit_pwd_a.getText().equals(edit_pwd.getText())){
+				txt_error.setText("Passwords don't match.\n");
+				return;
+			}
 			
 			// Connect to server
 			

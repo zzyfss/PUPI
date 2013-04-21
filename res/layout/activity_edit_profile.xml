@@ -5,7 +5,7 @@
     tools:context=".NewPostActivity" >
 
     <RelativeLayout
-        android:id="@+id/RL_new_post_top_bar"
+        android:id="@+id/RL_account_top_bar"
         android:layout_width="fill_parent"
         android:layout_height="56dp"
         android:layout_alignParentLeft="true"
@@ -13,60 +13,51 @@
         android:layout_alignParentTop="true" >
 
         <Button
-            android:id="@+id/btn_add_post"
+            android:id="@+id/btn_update"
             android:layout_marginLeft="8dp"
             style="@style/ButtonStyle"
             android:layout_width="100dp"
             android:layout_height="48dp"
             android:layout_marginTop="4dp"
-            android:text="Post" />
+            android:onClick="updateProfile"
+            android:text="Update" />
+
     </RelativeLayout>
+    
 
     <EditText
-        android:id="@+id/editText_post_title"
+        android:id="@+id/editText_account_name"
         android:layout_width="300dp"
         android:layout_height="48dp"
-        android:layout_below="@+id/RL_new_post_top_bar"
+        android:layout_below="@+id/RL_account_top_bar"
         android:layout_centerHorizontal="true"
-        android:layout_centerVertical="false"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="14dp"
         android:ems="10"
-        android:hint="Problem title:" >
+        android:hint="Name:" >
 
         <requestFocus />
     </EditText>
 
     <EditText
-        android:id="@+id/editText_post_reward"
+        android:id="@+id/editText_account_email"
         android:layout_width="300dp"
         android:layout_height="48dp"
-        android:layout_below="@+id/editText_post_title"
+        android:layout_below="@+id/editText_account_name"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="14dp"
         android:ems="10"
-        android:hint="Reward:" />
-    
-    <EditText
-        android:id="@+id/editText_post_loc"
-        android:layout_width="300dp"
-        android:layout_height="48dp"
-        android:layout_below="@+id/editText_post_reward"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="14dp"
-        android:ems="10"
-        android:hint="Building Room:" />
-    
-    
+        android:inputType="textEmailAddress"
+        android:hint="Email:" />
 
     <EditText
-        android:id="@+id/editText_post_content"
+        android:id="@+id/editText_account_intro"
         android:layout_width="300dp"
         android:layout_height="150dp"
-        android:layout_below="@+id/editText_post_loc"
+        android:layout_below="@+id/editText_account_email"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="14dp"
         android:ems="10"
-        android:hint="Brief description:"
+        android:hint="Self introduction:"
         android:inputType="textMultiLine" />
 
 </RelativeLayout>
