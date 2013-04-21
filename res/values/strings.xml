@@ -10,5 +10,6 @@
     <string name="title_section3">Section 3</string>
     <string name="title_activity_new_post">NewPostActivity</string>
     <string name="title_activity_edit_profile">EditProfileActivity</string>
+    <string name="title_activity_post_detail">PostDetailActivity</string>
 
 </resources>

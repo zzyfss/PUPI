@@ -162,17 +162,20 @@ containing a value of this type.
         public static final int tab_indicator=0x7f02000a;
     }
     public static final class id {
+        public static final int LL_post_detail_1=0x7f06001b;
         public static final int RL_account_top_bar=0x7f060005;
-        public static final int RL_home_top_bar=0x7f06001a;
+        public static final int RL_home_top_bar=0x7f060024;
         public static final int RL_new_post_top_bar=0x7f060013;
-        public static final int action_settings=0x7f06002c;
+        public static final int RL_post_detail_top_bar=0x7f060019;
+        public static final int action_settings=0x7f060034;
         public static final int btn_add_post=0x7f060014;
-        public static final int btn_edit=0x7f06001f;
-        public static final int btn_new_post=0x7f06001b;
-        public static final int btn_profile_picture=0x7f060020;
+        public static final int btn_edit=0x7f060029;
+        public static final int btn_go_to_help=0x7f06001a;
+        public static final int btn_new_post=0x7f060025;
+        public static final int btn_profile_picture=0x7f06002a;
         public static final int btn_signIn=0x7f06000f;
         public static final int btn_signUp=0x7f060010;
-        public static final int btn_switch_mode=0x7f06001c;
+        public static final int btn_switch_mode=0x7f060026;
         public static final int btn_update=0x7f060006;
         public static final int editText_account_email=0x7f060008;
         public static final int editText_account_intro=0x7f060009;
@@ -182,31 +185,36 @@ containing a value of this type.
         public static final int editText_post_reward=0x7f060016;
         public static final int editText_post_title=0x7f060015;
         public static final int editText_pwd=0x7f06000c;
-        public static final int editText_pwd_again=0x7f06002b;
+        public static final int editText_pwd_again=0x7f060033;
         public static final int editText_userName=0x7f06000b;
-        public static final int fragment_container=0x7f06001d;
+        public static final int fragment_container=0x7f060027;
         public static final int hidenContainer=0x7f06000d;
         public static final int hybrid=0x7f060004;
-        public static final int img_listItem_post_picture=0x7f060027;
+        public static final int img_listItem_post_picture=0x7f06001c;
         public static final int img_login_icon=0x7f06000a;
         public static final int login_btnContainer=0x7f06000e;
         public static final int none=0x7f060000;
         public static final int normal=0x7f060001;
         public static final int realtabcontent=0x7f060012;
         public static final int satellite=0x7f060002;
-        public static final int section_label=0x7f06001e;
+        public static final int section_label=0x7f060028;
         public static final int terrain=0x7f060003;
-        public static final int textView1=0x7f060019;
-        public static final int txt_account_email=0x7f060024;
-        public static final int txt_account_intro=0x7f060026;
-        public static final int txt_account_name=0x7f060022;
+        public static final int textView1=0x7f060023;
+        public static final int txt_account_email=0x7f06002e;
+        public static final int txt_account_intro=0x7f060030;
+        public static final int txt_account_name=0x7f06002c;
         public static final int txt_error=0x7f060011;
-        public static final int txt_listItem_post_reward=0x7f06002a;
-        public static final int txt_listItem_post_room=0x7f060029;
-        public static final int txt_listItem_post_title=0x7f060028;
-        public static final int txt_title_email=0x7f060023;
-        public static final int txt_title_intro=0x7f060025;
-        public static final int txt_title_name=0x7f060021;
+        public static final int txt_listItem_post_reward=0x7f060032;
+        public static final int txt_listItem_post_room=0x7f060031;
+        public static final int txt_listItem_post_title=0x7f06001e;
+        public static final int txt_post_detail_des=0x7f060022;
+        public static final int txt_post_detail_loc=0x7f060020;
+        public static final int txt_post_detail_name=0x7f06001d;
+        public static final int txt_post_detail_reward=0x7f06001f;
+        public static final int txt_post_detail_title_des=0x7f060021;
+        public static final int txt_title_email=0x7f06002d;
+        public static final int txt_title_intro=0x7f06002f;
+        public static final int txt_title_name=0x7f06002b;
     }
     public static final class integer {
         public static final int card_flip_time_full=0x7f090000;
@@ -217,19 +225,21 @@ containing a value of this type.
         public static final int activity_login=0x7f030001;
         public static final int activity_main=0x7f030002;
         public static final int activity_new_post=0x7f030003;
-        public static final int fragment_dummy=0x7f030004;
-        public static final int fragment_home=0x7f030005;
-        public static final int fragment_list_mode=0x7f030006;
-        public static final int fragment_main_dummy=0x7f030007;
-        public static final int fragment_profile=0x7f030008;
-        public static final int list_item_post=0x7f030009;
-        public static final int view_sign_up=0x7f03000a;
+        public static final int activity_post_detail=0x7f030004;
+        public static final int fragment_dummy=0x7f030005;
+        public static final int fragment_home=0x7f030006;
+        public static final int fragment_list_mode=0x7f030007;
+        public static final int fragment_main_dummy=0x7f030008;
+        public static final int fragment_profile=0x7f030009;
+        public static final int list_item_post=0x7f03000a;
+        public static final int view_sign_up=0x7f03000b;
     }
     public static final class menu {
         public static final int edit_profile=0x7f0b0000;
         public static final int login=0x7f0b0001;
         public static final int main=0x7f0b0002;
         public static final int new_post=0x7f0b0003;
+        public static final int post_detail=0x7f0b0004;
     }
     public static final class string {
         public static final int action_settings=0x7f070012;
@@ -300,6 +310,7 @@ containing a value of this type.
         public static final int title_activity_edit_profile=0x7f070019;
         public static final int title_activity_main=0x7f070014;
         public static final int title_activity_new_post=0x7f070018;
+        public static final int title_activity_post_detail=0x7f07001a;
         public static final int title_section1=0x7f070015;
         public static final int title_section2=0x7f070016;
         public static final int title_section3=0x7f070017;

@@ -14,15 +14,15 @@
 
         <Button
             android:id="@+id/btn_edit"
-            android:layout_marginLeft="8dp"
             style="@style/ButtonStyle"
             android:layout_width="100dp"
             android:layout_height="48dp"
+            android:layout_marginLeft="8dp"
             android:layout_marginTop="4dp"
             android:text="Edit" />
-
     </RelativeLayout>
-     <ImageButton
+
+    <ImageButton
         android:id="@+id/btn_profile_picture"
         android:layout_width="80dp"
         android:layout_height="80dp"
@@ -31,44 +31,42 @@
         android:layout_marginTop="14dp"
         android:src="@android:drawable/btn_star" />
 
-     <TextView
+    <TextView
         android:id="@+id/txt_title_name"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
-         android:textAppearance="?android:attr/textAppearanceMedium"
         android:layout_below="@+id/btn_profile_picture"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="14dp"
-        android:text="Name:"
         android:ems="10"
-        >
-   </TextView>
-    
+        android:text="Name:"
+        android:textAppearance="?android:attr/textAppearanceMedium" >
+    </TextView>
+
     <TextView
         android:id="@+id/txt_account_name"
         android:layout_width="300dp"
         android:layout_height="30dp"
-        android:textAppearance="?android:attr/textAppearanceMedium"
         android:layout_below="@+id/txt_title_name"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="5dp"
-        android:textIsSelectable="true"
         android:ems="10"
-        >
-   </TextView>
-	<TextView
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textIsSelectable="true" >
+    </TextView>
+
+    <TextView
         android:id="@+id/txt_title_email"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/txt_account_name"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="14dp"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Email:"
         android:ems="10"
-        >
-   </TextView>
-    
+        android:text="Email:"
+        android:textAppearance="?android:attr/textAppearanceMedium" >
+    </TextView>
+
     <TextView
         android:id="@+id/txt_account_email"
         android:layout_width="300dp"
@@ -76,32 +74,31 @@
         android:layout_below="@+id/txt_title_email"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="5dp"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:textIsSelectable="true"
         android:ems="10"
-        />
-	<TextView
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textIsSelectable="true" />
+
+    <TextView
         android:id="@+id/txt_title_intro"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/txt_account_email"
         android:layout_centerHorizontal="true"
-        android:textAppearance="?android:attr/textAppearanceMedium"
         android:layout_marginTop="14dp"
-        android:text="Self introduction:"
         android:ems="10"
-        >
-   </TextView>
+        android:text="Self introduction:"
+        android:textAppearance="?android:attr/textAppearanceMedium" >
+    </TextView>
+
     <TextView
         android:id="@+id/txt_account_intro"
         android:layout_width="300dp"
         android:layout_height="30dp"
         android:layout_below="@+id/txt_title_intro"
-        android:textAppearance="?android:attr/textAppearanceMedium"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="14dp"
-        android:textIsSelectable="true"
         android:ems="10"
-        />
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textIsSelectable="true" />
 
 </RelativeLayout>
