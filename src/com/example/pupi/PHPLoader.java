@@ -28,8 +28,9 @@ public class PHPLoader {
 	final static String NAME_PHP = "http://web.ics.purdue.edu/~maog/name.php";
 	final static String REGISTER_PHP = "http://web.ics.purdue.edu/~maog/register.php";
 	final static String GETPOST_PHP = "http://web.ics.purdue.edu/~maog/getpost.php";
-	
+
 	static String getStringFromPhp(String in,List list){
+
 		String resultString = null;
 		HttpClient httpClient = new DefaultHttpClient();
 		HttpPost httpPost = new HttpPost(in);

@@ -23,6 +23,7 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -67,8 +68,23 @@ public class LoginActivity extends Activity {
 
 	public void signIn(View view){
 		if(btn_signIn.getText().equals("Sign In")){
-			Log.d("signin","in");
 			new AsyncLoginAgent().execute(this);
+/*			ConnectivityManager conMgr =  (ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
+
+			if ( conMgr.getNetworkInfo(0).getState() == NetworkInfo.State.CONNECTED 
+			    ||  conMgr.getNetworkInfo(1).getState() == NetworkInfo.State.CONNECTING  ) {
+
+				new AsyncLoginAgent().execute(this);
+			    //notify user you are online
+
+			}
+			else if ( conMgr.getNetworkInfo(0).getState() == NetworkInfo.State.DISCONNECTED 
+			    ||  conMgr.getNetworkInfo(1).getState() == NetworkInfo.State.DISCONNECTED) {
+				Toast.makeText(getApplicationContext(), "Please check your Internet configuration",Toast.LENGTH_SHORT).show();
+			    //notify user you are not online
+
+			}
+*/			
 		}
 		else{
 			btn_signIn.setText("Sign In");
@@ -108,10 +124,6 @@ public class LoginActivity extends Activity {
 		
 		@Override
 		protected void onPostExecute(Object result) {
-			if(result==null){
-				Toast.makeText(getApplicationContext(), "null", Toast.LENGTH_SHORT).show();
-				Log.d("return","result");
-			}
 			if(((String)result).startsWith("succ")){
 				Intent intent = new Intent(LoginActivity.this,MainActivity.class);
 				startActivity(intent);
@@ -139,15 +151,40 @@ public class LoginActivity extends Activity {
 				txt_error.setText("User Name or Password can't be empty.");
 				return;
 			}
-			else if(!edit_pwd_a.getText().equals(edit_pwd.getText())){
+			else if(!edit_pwd_a.getText().toString().equals(pwd)){
 				txt_error.setText("Passwords don't match.\n");
 				return;
 			}
-			
 			// Connect to server
-			
+			new AsyncRegisterAgent().execute(this);
 		}
 
+	}
+private class AsyncRegisterAgent extends AsyncTask{
+		
+		@Override
+		protected Object doInBackground(Object... params) {
+				String username = edit_userName.getText().toString();
+				String password = edit_pwd.getText().toString();
+				String resultString = null;
+				List<NameValuePair> nameValPair = new ArrayList<NameValuePair>();
+				nameValPair.add(new BasicNameValuePair("username", username));
+				nameValPair.add(new BasicNameValuePair("password", password));
+				resultString = PHPLoader.getStringFromPhp(PHPLoader.REGISTER_PHP,nameValPair);
+				return resultString;
+		}
+		
+		@Override
+		protected void onPostExecute(Object result) {
+			if(((String)result).startsWith("success")){
+				Toast.makeText(getApplicationContext(), "Sign up success!", Toast.LENGTH_SHORT).show();
+				Intent intent = new Intent(LoginActivity.this,MainActivity.class);
+				startActivity(intent);
+				finish();
+			}else{
+				Toast.makeText(getApplicationContext(), "Unavaliable username, Please try again", Toast.LENGTH_SHORT).show();
+			}
+		}
 	}
 
 	private void addItem() {
