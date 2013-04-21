@@ -14,10 +14,23 @@ public class PUPIPost {
 	private String location;
 	private double locx;
 	private double locy;
-	private Timestamp timestamp;
+	private Timestamp time;
 	private String title;
 	private String content;
 	private String reward;
+	
+	
+	public PUPIPost(String string){
+		String[] array = string.split("*#xx#");
+		String[] keys = new String[array.length];
+		String[] values = new String[array.length];
+		for(int i=0; i<array.length; i++){
+			String[] item = array[i].split(":");
+			keys[i] = item[0];
+			values[i] = item[1];
+		}
+	}
+	
 	
 	public int getPost_id(){
 		return post_id;
@@ -44,7 +57,7 @@ public class PUPIPost {
 	}
 	
 	public Timestamp getTimestamp(){
-		return timestamp;
+		return time;
 	}
 	
 	public String getTitle(){
@@ -68,6 +81,7 @@ public class PUPIPost {
 		}
 		return nameValPair;
 	}
+	
 	
 	public void setPost_id(int post_id){
 		this.post_id = post_id;
