@@ -1,3 +1,5 @@
 *.class
 *.DS_Store
 *.DS_Store?
+*.dex
+PUPI.apk
