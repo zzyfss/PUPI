@@ -71,7 +71,7 @@ public class LoginActivity extends Activity {
 			// Check password field first
 			EditText edit_pwd_a =(EditText)mContainerView.findViewById(R.id.editText_pwd_again);
 			if(!edit_pwd_a.getText().equals(edit_pwd.getText())){
-				txt_error.setText("Two passwords don't match");
+				txt_error.setText("Passwords don't match.\nå");
 				return;
 			}
 			

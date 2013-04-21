@@ -1,5 +1,8 @@
 package com.example.pupi;
 
+import com.google.android.gms.maps.SupportMapFragment;
+
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
@@ -7,13 +10,12 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.View.OnClickListener;
 import android.widget.CompoundButton;
 import android.widget.Switch;
 
 public class HomeFragment extends Fragment{
 	
-	private MapDisplayFragment mMapDisplay;
+	private SupportMapFragment mMapDisplay;
 	private ListDisplayFragment mListDisplay;
 	private View mView;
 	
@@ -32,7 +34,7 @@ public class HomeFragment extends Fragment{
 
 			Log.d("View", "Create");
 
-			mMapDisplay = new MapDisplayFragment();
+			mMapDisplay = new SupportMapFragment();
 			mListDisplay = new ListDisplayFragment();
 
 			// In case this activity was started with special instructions from an Intent,

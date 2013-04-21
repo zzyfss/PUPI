@@ -5,18 +5,21 @@
     xmlns:app="http://schemas.android.com/apk/res/com.example.puclassmate" >
 
     <RelativeLayout
-        android:id="@+id/linearLayout1"
+        android:id="@+id/RL_home_top_bar"
         android:layout_width="fill_parent"
         android:layout_height="56dp"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:background="@drawable/background_blue" >
+        >
 
         <Button
-            android:id="@+id/button1"
-            android:layout_width="wrap_content"
+            android:id="@+id/btn_new_post"
+            android:layout_width="100dp"
+            android:layout_marginLeft="8dp"
+            style="@style/ButtonStyle"
             android:layout_height="48dp"
             android:layout_marginTop="4dp"
+            android:onClick="createPost"
             android:text="New Post" />
                 
         <Switch
@@ -37,7 +40,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
-        android:layout_below="@+id/linearLayout1" >
+        android:layout_below="@+id/RL_home_top_bar" >
 
     </FrameLayout>
 

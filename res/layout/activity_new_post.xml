@@ -1,0 +1,60 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".NewPostActivity" >
+
+    <RelativeLayout
+        android:id="@+id/RL_new_post_top_bar"
+        android:layout_width="fill_parent"
+        android:layout_height="56dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true" >
+
+        <Button
+            android:id="@+id/btn_add_post"
+            android:layout_marginLeft="8dp"
+            style="@style/ButtonStyle"
+            android:layout_width="100dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="4dp"
+            android:text="Post" />
+    </RelativeLayout>
+
+    <EditText
+        android:id="@+id/editText_post_title"
+        android:layout_width="300dp"
+        android:layout_height="48dp"
+        android:layout_below="@+id/RL_new_post_top_bar"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="false"
+        android:layout_marginTop="28dp"
+        android:ems="10"
+        android:hint="Problem title:" >
+
+        <requestFocus />
+    </EditText>
+
+    <EditText
+        android:id="@+id/editText_post_reward"
+        android:layout_width="300dp"
+        android:layout_height="48dp"
+        android:layout_below="@+id/editText_post_title"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="14dp"
+        android:ems="10"
+        android:hint="Reward:" />
+
+    <EditText
+        android:id="@+id/editText_post_content"
+        android:layout_width="300dp"
+        android:layout_height="150dp"
+        android:layout_below="@+id/editText_post_reward"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="14dp"
+        android:ems="10"
+        android:hint="Brief description:"
+        android:inputType="textMultiLine" />
+
+</RelativeLayout>

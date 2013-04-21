@@ -1,10 +1,12 @@
 package com.example.pupi;
 
 import android.app.ActionBar;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTabHost;
 import android.support.v4.app.FragmentTransaction;
+import android.view.View;
 import android.view.Window;
 import android.widget.TabHost.OnTabChangeListener;
 
@@ -34,11 +36,16 @@ public class MainActivity extends FragmentActivity {
                 HomeFragment.class, null);
         mTabHost.addTab(mTabHost.newTabSpec("track").setIndicator("Track"),
                ListDisplayFragment.class, null);
-        mTabHost.addTab(mTabHost.newTabSpec("account").setIndicator("Account"),
-        		ListDisplayFragment.class, null);
+        mTabHost.addTab(mTabHost.newTabSpec("profile").setIndicator("Profile"),
+        		ProfileFragment.class, null);
 
     }
     
+    public void createPost(View view){
+		Intent i = new Intent(this,NewPostActivity.class);
+		startActivity(i);
+		
+	}
   
 
 }
