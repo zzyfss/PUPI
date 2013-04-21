@@ -19,7 +19,7 @@ public class PUPIPost {
 	private String content;
 	private String reward;
 	
-	
+	//pull down
 	public PUPIPost(String string){
 		String[] array = string.split("*#xx#");
 		String[] keys = new String[array.length];
@@ -72,6 +72,7 @@ public class PUPIPost {
 		return reward;
 	}
 	
+	//Upload to server
 	public List getPostPackage(){
 		List<NameValuePair> nameValPair = new ArrayList<NameValuePair>();
 		String keys[] = {"poster", "location", "locx", "locy", "title", "content", "reward"};
@@ -108,7 +109,7 @@ public class PUPIPost {
 	}
 	
 	public void setTimestamp(Timestamp timestamp){
-		this.timestamp = timestamp;
+		this.time = timestamp;
 	}
 	
 	public void setTitle(String title){
