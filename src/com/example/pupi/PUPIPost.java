@@ -34,7 +34,10 @@ public class PUPIPost {
 			//System.out.println(array[i]);
 			int index = array[i].indexOf(":");
 			keys[i] = array[i].substring(0, index);
-			values[i] = array[i].substring(index+1, array[i].length());
+			if(index == array[i].length()-1)
+				values[i] = "";
+			else
+				values[i] = array[i].substring(index+1, array[i].length());
 		}
 		poster = values[0];
 		helper = values[1];
