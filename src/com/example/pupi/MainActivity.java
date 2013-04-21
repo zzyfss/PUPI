@@ -1,14 +1,12 @@
 package com.example.pupi;
 
-import android.app.ActionBar;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTabHost;
-import android.support.v4.app.FragmentTransaction;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
-import android.widget.TabHost.OnTabChangeListener;
 
 /**
  * This demonstrates the use of action bar tabs and how they interact
@@ -17,17 +15,15 @@ import android.widget.TabHost.OnTabChangeListener;
 public class MainActivity extends FragmentActivity {
    
     private FragmentTabHost mTabHost;
+    public static String userId;
     
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_main);
         
-        final ActionBar bar = getActionBar();
-        if(bar!=null){
-        	bar.setNavigationMode(ActionBar.NAVIGATION_MODE_STANDARD);
-        	bar.setDisplayOptions(0, ActionBar.DISPLAY_SHOW_TITLE);  
-        }
+        userId = getIntent().getStringExtra("USERID").toString();
+        Log.d("USERID",userId);
         
         mTabHost = (FragmentTabHost) findViewById(android.R.id.tabhost);
         mTabHost.setup(this, getSupportFragmentManager(), R.id.realtabcontent);
@@ -46,6 +42,11 @@ public class MainActivity extends FragmentActivity {
 		startActivity(i);
 		
 	}
+    
+    public void viewPost(View view){
+    	Intent i = new Intent(this,PostDetailActivity.class);
+    	startActivity(i);
+    }
   
 
 }

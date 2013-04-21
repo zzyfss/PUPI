@@ -78,16 +78,4 @@
             android:text="Sign Up" />
     </LinearLayout>
 
-    <TextView
-        android:id="@+id/txt_error"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/login_btnContainer"
-        android:layout_centerHorizontal="true"
-        android:layout_centerInParent="true"
-        android:layout_marginTop="14dp"
-        android:textColor="#FF4444"
-        android:textSize="15sp" >
-    </TextView>
-
 </RelativeLayout>

@@ -1,32 +1,16 @@
 package com.example.pupi;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
-import android.app.Activity;
-
-import org.apache.http.HttpEntity;
-import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
-import org.apache.http.client.ClientProtocolException;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.entity.UrlEncodedFormEntity;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
-import org.apache.http.util.EntityUtils;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
-import android.os.AsyncTask;
 
-import android.content.Context;
+import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.View;
@@ -37,24 +21,20 @@ import android.widget.TextView;
 import android.widget.Toast;
 public class LoginActivity extends Activity {
 
-	private Activity mActivity;
 	private ViewGroup mContainerView;
 	private Button btn_signUp;
 	private Button btn_signIn;
-	private TextView txt_error;
 	private EditText edit_userName;
 	private EditText edit_pwd;
-	
+	private ProgressDialog dilg_progress;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_login);
-		mActivity = this;
 
 		mContainerView = (ViewGroup) findViewById(R.id.hidenContainer);
 		btn_signIn = (Button)findViewById(R.id.btn_signIn);
 		btn_signUp = (Button)findViewById(R.id.btn_signUp);
-		txt_error = (TextView)findViewById(R.id.txt_error);
 		edit_userName =(EditText)findViewById(R.id.editText_userName);
 		edit_pwd = (EditText)findViewById(R.id.editText_pwd);
 	}
@@ -68,8 +48,15 @@ public class LoginActivity extends Activity {
 
 	public void signIn(View view){
 		if(btn_signIn.getText().equals("Sign In")){
+			String name=edit_userName.getText().toString();
+			String pwd = edit_pwd.getText().toString();
+			if(pwd.isEmpty() || name.isEmpty() ){
+				Toast.makeText(getApplicationContext(), "User Name or Password can't be empty.", Toast.LENGTH_SHORT).show();
+				return;
+			}
+			dilg_progress= ProgressDialog.show(this,"","Loading...",false,true);
 			new AsyncLoginAgent().execute(this);
-/*			ConnectivityManager conMgr =  (ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
+			/*			ConnectivityManager conMgr =  (ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
 
 			if ( conMgr.getNetworkInfo(0).getState() == NetworkInfo.State.CONNECTED 
 			    ||  conMgr.getNetworkInfo(1).getState() == NetworkInfo.State.CONNECTING  ) {
@@ -84,53 +71,40 @@ public class LoginActivity extends Activity {
 			    //notify user you are not online
 
 			}
-*/			
+			 */			
 		}
-		else{
+		else if(btn_signIn.getText().equals("Cancel")){
 			btn_signIn.setText("Sign In");
 			btn_signUp.setText("Sign Up");
 			mContainerView.removeViewAt(0);
 		}
-/*		if(btn_signIn.getText().equals("Sign In")){
-			Intent intent = new Intent(this,MainActivity.class);
-			
-			// Connect to server
-			
-			startActivity(intent); 
-			//overridePendingTransition(R.animator.card_flip_left_in, R.animator.card_flip_left_out);
-			
-			finish();
-		}
-		else{
-			btn_signIn.setText("Sign In");
-			btn_signUp.setText("Sign Up");
-			mContainerView.removeViewAt(0);
-		}
-		*/
 	}
 	private class AsyncLoginAgent extends AsyncTask{
-		
+
 		@Override
 		protected Object doInBackground(Object... params) {
-				String username = edit_userName.getText().toString();
-				String password = edit_pwd.getText().toString();
-				String resultString = null;
-				List<NameValuePair> nameValPair = new ArrayList<NameValuePair>();
-				nameValPair.add(new BasicNameValuePair("username", username));
-				nameValPair.add(new BasicNameValuePair("password", password));
-				resultString = PHPLoader.getStringFromPhp(PHPLoader.LOGIN_PHP,nameValPair);
-				return resultString;
+			String username = edit_userName.getText().toString();
+			String password = edit_pwd.getText().toString();
+			String resultString = null;
+			List<NameValuePair> nameValPair = new ArrayList<NameValuePair>();
+			nameValPair.add(new BasicNameValuePair("username", username));
+			nameValPair.add(new BasicNameValuePair("password", password));
+			resultString = PHPLoader.getStringFromPhp(PHPLoader.LOGIN_PHP,nameValPair);
+			return resultString;
 		}
-		
+
 		@Override
 		protected void onPostExecute(Object result) {
+			dilg_progress.dismiss();
 			if(((String)result).startsWith("succ")){
 				Intent intent = new Intent(LoginActivity.this,MainActivity.class);
+				intent.putExtra("USERID",edit_userName.getText().toString());
 				startActivity(intent);
 				finish();
-			}else{
-				Toast.makeText(getApplicationContext(), "Login fail, please try again.", Toast.LENGTH_SHORT).show();
+			}else if(((String)result).startsWith("fail")){
+				Toast.makeText(getApplicationContext(), "Username/Password pair not found.", Toast.LENGTH_SHORT).show();	
 			}
+
 		}
 	}
 
@@ -143,46 +117,49 @@ public class LoginActivity extends Activity {
 			btn_signUp.setText("OK");
 		}
 		else{
-			// Check password field first
+			// Check user and password fields first
 			EditText edit_pwd_a =(EditText)mContainerView.findViewById(R.id.editText_pwd_again);
 			String name=edit_userName.getText().toString();
 			String pwd = edit_pwd.getText().toString();
 			if(pwd.isEmpty() || name.isEmpty() ){
-				txt_error.setText("User Name or Password can't be empty.");
+				Toast.makeText(getApplicationContext(), "User Name or Password can't be empty.", Toast.LENGTH_SHORT).show();
 				return;
 			}
 			else if(!edit_pwd_a.getText().toString().equals(pwd)){
-				txt_error.setText("Passwords don't match.\n");
+				Toast.makeText(getApplicationContext(), "Passwords don't match.\n", Toast.LENGTH_SHORT).show();
 				return;
 			}
 			// Connect to server
+			dilg_progress= ProgressDialog.show(this,"","Loading...",false,true);
 			new AsyncRegisterAgent().execute(this);
 		}
 
 	}
-private class AsyncRegisterAgent extends AsyncTask{
-		
+	private class AsyncRegisterAgent extends AsyncTask{
+
 		@Override
 		protected Object doInBackground(Object... params) {
-				String username = edit_userName.getText().toString();
-				String password = edit_pwd.getText().toString();
-				String resultString = null;
-				List<NameValuePair> nameValPair = new ArrayList<NameValuePair>();
-				nameValPair.add(new BasicNameValuePair("username", username));
-				nameValPair.add(new BasicNameValuePair("password", password));
-				resultString = PHPLoader.getStringFromPhp(PHPLoader.REGISTER_PHP,nameValPair);
-				return resultString;
+			String username = edit_userName.getText().toString();
+			String password = edit_pwd.getText().toString();
+			String resultString = null;
+			List<NameValuePair> nameValPair = new ArrayList<NameValuePair>();
+			nameValPair.add(new BasicNameValuePair("username", username));
+			nameValPair.add(new BasicNameValuePair("password", password));
+			resultString = PHPLoader.getStringFromPhp(PHPLoader.REGISTER_PHP,nameValPair);
+			return resultString;
 		}
-		
+
 		@Override
 		protected void onPostExecute(Object result) {
+			dilg_progress.dismiss();
 			if(((String)result).startsWith("success")){
 				Toast.makeText(getApplicationContext(), "Sign up success!", Toast.LENGTH_SHORT).show();
 				Intent intent = new Intent(LoginActivity.this,MainActivity.class);
+				intent.putExtra("USERID",edit_userName.getText().toString());
 				startActivity(intent);
 				finish();
-			}else{
-				Toast.makeText(getApplicationContext(), "Unavaliable username, Please try again", Toast.LENGTH_SHORT).show();
+			}else if(((String)result).startsWith("fail")){
+				Toast.makeText(getApplicationContext(), "Username Unavailable. Please try again", Toast.LENGTH_SHORT).show();
 			}
 		}
 	}
@@ -197,5 +174,5 @@ private class AsyncRegisterAgent extends AsyncTask{
 		// adding this view is automatically animated.
 		mContainerView.addView(newView, 0);
 	}
-	
+
 }

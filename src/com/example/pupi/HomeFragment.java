@@ -2,7 +2,6 @@ package com.example.pupi;
 
 import com.google.android.gms.maps.SupportMapFragment;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
