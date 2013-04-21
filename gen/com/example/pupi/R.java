@@ -206,9 +206,8 @@ containing a value of this type.
         public static final int fragment_home=0x7f030004;
         public static final int fragment_list_mode=0x7f030005;
         public static final int fragment_main_dummy=0x7f030006;
-        public static final int fragment_map_mode=0x7f030007;
-        public static final int fragment_profile=0x7f030008;
-        public static final int view_sign_up=0x7f030009;
+        public static final int fragment_profile=0x7f030007;
+        public static final int view_sign_up=0x7f030008;
     }
     public static final class menu {
         public static final int login=0x7f0b0000;

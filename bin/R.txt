@@ -71,9 +71,8 @@ int layout fragment_dummy 0x7f030003
 int layout fragment_home 0x7f030004
 int layout fragment_list_mode 0x7f030005
 int layout fragment_main_dummy 0x7f030006
-int layout fragment_map_mode 0x7f030007
-int layout fragment_profile 0x7f030008
-int layout view_sign_up 0x7f030009
+int layout fragment_profile 0x7f030007
+int layout view_sign_up 0x7f030008
 int menu login 0x7f0b0000
 int menu main 0x7f0b0001
 int menu new_post 0x7f0b0002
