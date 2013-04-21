@@ -1,9 +1,17 @@
 package com.example.pupi;
 
 
+import java.util.ArrayList;
+import java.util.List;
+
+import org.apache.http.NameValuePair;
+import org.apache.http.message.BasicNameValuePair;
+
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -12,27 +20,50 @@ import android.widget.Button;
 import android.widget.TextView;
 
 public class ProfileFragment extends Fragment{
-
+	private TextView text_name;
+	private TextView text_email;
+	private TextView text_intro;
 
 
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 		final View view = inflater.inflate(R.layout.fragment_profile,
 				container, false);
+		text_name = (TextView) view.findViewById(R.id.txt_account_name);
+		text_email = (TextView) view.findViewById(R.id.txt_account_email);
+		text_intro = (TextView) view.findViewById(R.id.txt_account_intro);
+		new AsyncGetinfoAgent().execute(this);
 		((Button)view.findViewById(R.id.btn_edit)).setOnClickListener(new OnClickListener(){
-
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
 				Intent intent = new Intent(v.getContext(),EditProfileActivity.class);
-				intent.putExtra("NAME", ((TextView) view.findViewById(R.id.txt_account_name)).getText().toString());
-				intent.putExtra("EMAIL", ((TextView) view.findViewById(R.id.txt_account_email)).getText().toString());
-				intent.putExtra("INTRO", ((TextView) view.findViewById(R.id.txt_account_intro)).getText().toString());
+				intent.putExtra("NAME", text_name.getText().toString());
+				intent.putExtra("EMAIL", text_email.getText().toString());
+				intent.putExtra("INTRO", text_intro.getText().toString());
 				v.getContext().startActivity(intent);
 			}
-
+			
 		});
 		return view;
+	}
+	private class AsyncGetinfoAgent extends AsyncTask{
+		
+		@Override
+		protected Object doInBackground(Object... params) {
+				String username = "username";
+				String resultString = null;
+				List<NameValuePair> nameValPair = new rrayList<NameValuePair>();
+				nameValPair.add(new BasicNameValuePair("username", username));
+				resultString = PHPLoader.getStringFromPhp(PHPLoader.GETINFO_PHP,nameValPair);
+				return resultString;
+		}
+		
+		@Override
+		protected void onPostExecute(Object result) {
+			String stringResult = (String)result;
+			Log.d("test",stringResult);
+		}
 	}
 	
 }
