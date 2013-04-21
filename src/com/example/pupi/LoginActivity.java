@@ -1,8 +1,31 @@
 package com.example.pupi;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.List;
+
 import android.app.Activity;
+
+import org.apache.http.HttpEntity;
+import org.apache.http.HttpResponse;
+import org.apache.http.NameValuePair;
+import org.apache.http.client.ClientProtocolException;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.entity.UrlEncodedFormEntity;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.message.BasicNameValuePair;
+import org.apache.http.util.EntityUtils;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
+import android.os.AsyncTask;
+
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.View;
@@ -10,7 +33,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-
+import android.widget.Toast;
 public class LoginActivity extends Activity {
 
 	private Activity mActivity;
@@ -44,6 +67,15 @@ public class LoginActivity extends Activity {
 
 	public void signIn(View view){
 		if(btn_signIn.getText().equals("Sign In")){
+			Log.d("signin","in");
+			new AsyncLoginAgent().execute(this);
+		}
+		else{
+			btn_signIn.setText("Sign In");
+			btn_signUp.setText("Sign Up");
+			mContainerView.removeViewAt(0);
+		}
+/*		if(btn_signIn.getText().equals("Sign In")){
 			Intent intent = new Intent(this,MainActivity.class);
 			
 			// Connect to server
@@ -58,7 +90,38 @@ public class LoginActivity extends Activity {
 			btn_signUp.setText("Sign Up");
 			mContainerView.removeViewAt(0);
 		}
+		*/
 	}
+	private class AsyncLoginAgent extends AsyncTask{
+		
+		@Override
+		protected Object doInBackground(Object... params) {
+				String username = edit_userName.getText().toString();
+				String password = edit_pwd.getText().toString();
+				String resultString = null;
+				List<NameValuePair> nameValPair = new ArrayList<NameValuePair>();
+				nameValPair.add(new BasicNameValuePair("username", username));
+				nameValPair.add(new BasicNameValuePair("password", password));
+				resultString = PHPLoader.getStringFromPhp(PHPLoader.LOGIN_PHP,nameValPair);
+				return resultString;
+		}
+		
+		@Override
+		protected void onPostExecute(Object result) {
+			if(result==null){
+				Toast.makeText(getApplicationContext(), "null", Toast.LENGTH_SHORT).show();
+				Log.d("return","result");
+			}
+			if(((String)result).startsWith("succ")){
+				Intent intent = new Intent(LoginActivity.this,MainActivity.class);
+				startActivity(intent);
+				finish();
+			}else{
+				Toast.makeText(getApplicationContext(), "Login fail, please try again.", Toast.LENGTH_SHORT).show();
+			}
+		}
+	}
+
 
 	public void signUp(View view){
 		//		 mActivity.findViewById()
@@ -97,5 +160,5 @@ public class LoginActivity extends Activity {
 		// adding this view is automatically animated.
 		mContainerView.addView(newView, 0);
 	}
-
+	
 }
