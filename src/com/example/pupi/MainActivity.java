@@ -67,7 +67,7 @@ public class MainActivity extends FragmentActivity {
 			for(int i=0; i<temp.length; i++){
 				//Log.d("Index", Integer.toString(i));
 				PUPIPost p = new PUPIPost(temp[i]);
-				//Log.d("Test",temp[i]);
+				Log.d("Each Post",temp[i]);
 				posts.add(p);
 			}
 			
