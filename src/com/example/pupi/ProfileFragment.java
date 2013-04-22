@@ -51,9 +51,9 @@ public class ProfileFragment extends Fragment{
 		
 		@Override
 		protected Object doInBackground(Object... params) {
-				String username = "username";
+				String username = "king123";
 				String resultString = null;
-				List<NameValuePair> nameValPair = new rrayList<NameValuePair>();
+				List<NameValuePair> nameValPair = new ArrayList<NameValuePair>();
 				nameValPair.add(new BasicNameValuePair("username", username));
 				resultString = PHPLoader.getStringFromPhp(PHPLoader.GETINFO_PHP,nameValPair);
 				return resultString;
@@ -63,6 +63,15 @@ public class ProfileFragment extends Fragment{
 		protected void onPostExecute(Object result) {
 			String stringResult = (String)result;
 			Log.d("test",stringResult);
+			String name = stringResult.substring(stringResult.indexOf("####name:")+9,stringResult.indexOf("####email:"));
+			String email = stringResult.substring(stringResult.indexOf("####email:")+10,stringResult.indexOf("####info:"));
+			String intro = stringResult.substring(stringResult.indexOf("####info:")+9,stringResult.length());
+			text_name.setText(name);
+			text_email.setText(email);
+			text_intro.setText(intro);
+			Log.d("test3",stringResult);
+			Log.d("test4",name+" " + email + " " + intro);
+			
 		}
 	}
 	
