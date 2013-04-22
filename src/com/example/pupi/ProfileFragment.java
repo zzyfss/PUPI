@@ -69,9 +69,6 @@ public class ProfileFragment extends Fragment{
 			text_name.setText(name);
 			text_email.setText(email);
 			text_intro.setText(intro);
-			Log.d("test3",stringResult);
-			Log.d("test4",name+" " + email + " " + intro);
-			
 		}
 	}
 	
