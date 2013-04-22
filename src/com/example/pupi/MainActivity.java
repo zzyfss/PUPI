@@ -69,15 +69,11 @@ public class MainActivity extends FragmentActivity {
 				PUPIPost p = new PUPIPost(temp[i]);
 				Log.d("Each Post",temp[i]);
 				posts.add(p);
-			}
-			
+			}	
 			return null;
-		}
-    	
+		}    	
     }
 
-
-    
     public void createPost(View view){
 		Intent i = new Intent(this,NewPostActivity.class);
 		startActivity(i);
