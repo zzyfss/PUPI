@@ -25,6 +25,7 @@ public class ProfileFragment extends Fragment{
 	private TextView text_intro;
 
 
+	
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 		final View view = inflater.inflate(R.layout.fragment_profile,
@@ -32,7 +33,7 @@ public class ProfileFragment extends Fragment{
 		text_name = (TextView) view.findViewById(R.id.txt_account_name);
 		text_email = (TextView) view.findViewById(R.id.txt_account_email);
 		text_intro = (TextView) view.findViewById(R.id.txt_account_intro);
-		new AsyncGetinfoAgent().execute(this);
+		
 		((Button)view.findViewById(R.id.btn_edit)).setOnClickListener(new OnClickListener(){
 			@Override
 			public void onClick(View v) {
@@ -47,6 +48,13 @@ public class ProfileFragment extends Fragment{
 			
 		});
 		return view;
+	}
+	
+	@Override
+	public void onResume() {
+		// TODO Auto-generated method stub
+		super.onResume();
+		new AsyncGetinfoAgent().execute(this);
 	}
 	private class AsyncGetinfoAgent extends AsyncTask{
 		
