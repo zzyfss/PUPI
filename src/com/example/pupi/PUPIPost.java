@@ -23,6 +23,13 @@ public class PUPIPost {
 	private String content;
 	private String reward;
 	
+	
+	public PUPIPost(){
+		
+	}
+
+	
+	
 	//pull down
 	public PUPIPost(String string){
 		string = string.substring(4);
@@ -110,17 +117,17 @@ public class PUPIPost {
 		return nameValPair;
 	}
 	
-	public void setPost_id(int post_id){
-		this.post_id = post_id;
-	}
+	//public void setPost_id(int post_id){
+	//	this.post_id = post_id;
+	//}
 	
 	public void setPoster(String poster){
 		this.poster = poster;
 	}
 	
-	public void setHelper(String helper){
-		this.helper = helper;
-	}
+	//public void setHelper(String helper){
+		//this.helper = helper;
+	//}
 
 	public void setLocation(String location){
 		this.location = location;
@@ -134,9 +141,9 @@ public class PUPIPost {
 		this.locy = locy;
 	}
 	
-	public void setTime(Timestamp time){
-		this.time = time;
-	}
+	//public void setTime(Timestamp time){
+		//this.time = time;
+	//}
 	
 	public void setTitle(String title){
 		this.title = title;
