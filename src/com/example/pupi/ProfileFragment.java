@@ -42,6 +42,7 @@ public class ProfileFragment extends Fragment{
 				intent.putExtra("EMAIL", text_email.getText().toString());
 				intent.putExtra("INTRO", text_intro.getText().toString());
 				v.getContext().startActivity(intent);
+				
 			}
 			
 		});
@@ -51,7 +52,7 @@ public class ProfileFragment extends Fragment{
 		
 		@Override
 		protected Object doInBackground(Object... params) {
-				String username = "king123";
+				String username = MainActivity.userId;
 				String resultString = null;
 				List<NameValuePair> nameValPair = new ArrayList<NameValuePair>();
 				nameValPair.add(new BasicNameValuePair("username", username));
@@ -62,13 +63,13 @@ public class ProfileFragment extends Fragment{
 		@Override
 		protected void onPostExecute(Object result) {
 			String stringResult = (String)result;
-			Log.d("test",stringResult);
 			String name = stringResult.substring(stringResult.indexOf("####name:")+9,stringResult.indexOf("####email:"));
 			String email = stringResult.substring(stringResult.indexOf("####email:")+10,stringResult.indexOf("####info:"));
 			String intro = stringResult.substring(stringResult.indexOf("####info:")+9,stringResult.length());
 			text_name.setText(name);
 			text_email.setText(email);
 			text_intro.setText(intro);
+			
 		}
 	}
 	
