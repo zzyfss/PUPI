@@ -46,7 +46,7 @@ public class PHPLoader {
 			//e.printStackTrace();
 		}catch(IOException e){
 			Log.d("Login", "IOE");
-			Toast.makeText(null, "Connection error,Please check", Toast.LENGTH_SHORT).show();
+			return "IOE";
 		}
 		return resultString;
 	}
