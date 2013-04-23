@@ -96,13 +96,17 @@ public class LoginActivity extends Activity {
 		@Override
 		protected void onPostExecute(Object result) {
 			dilg_progress.dismiss();
-			if(((String)result).startsWith("succ")){
+			String r = (String)result;
+			if(r.startsWith("succ")){
 				Intent intent = new Intent(LoginActivity.this,MainActivity.class);
 				intent.putExtra("USERID",edit_userName.getText().toString());
 				startActivity(intent);
 				finish();
-			}else if(((String)result).startsWith("fail")){
+			}else if(r.startsWith("fail")){
 				Toast.makeText(getApplicationContext(), "Username/Password pair not found.", Toast.LENGTH_SHORT).show();	
+			}
+			else if(r.equals("IOE")){
+				Toast.makeText(getApplicationContext(), "Connection error. Please check internet configurations", Toast.LENGTH_SHORT).show();	
 			}
 
 		}
@@ -152,15 +156,20 @@ public class LoginActivity extends Activity {
 		@Override
 		protected void onPostExecute(Object result) {
 			dilg_progress.dismiss();
-			if(((String)result).startsWith("success")){
+			String r = (String)result;
+			if(r.startsWith("success")){
 				Toast.makeText(getApplicationContext(), "Sign up success!", Toast.LENGTH_SHORT).show();
 				Intent intent = new Intent(LoginActivity.this,MainActivity.class);
 				intent.putExtra("USERID",edit_userName.getText().toString());
 				startActivity(intent);
 				finish();
-			}else if(((String)result).startsWith("fail")){
+			}else if(r.startsWith("fail")){
 				Toast.makeText(getApplicationContext(), "Username Unavailable. Please try again", Toast.LENGTH_SHORT).show();
 			}
+			else if(r.equals("IOE")){
+				Toast.makeText(getApplicationContext(), "Connection error. Please check internet configurations", Toast.LENGTH_SHORT).show();	
+			}
+
 		}
 	}
 

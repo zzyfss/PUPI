@@ -1,76 +1,101 @@
 package com.example.pupi;
 
 
+import java.util.List;
+
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.ListFragment;
-import android.util.Log;
+import android.support.v4.app.LoaderManager;
+import android.support.v4.content.Loader;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import android.widget.BaseAdapter;
+import android.widget.ArrayAdapter;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
-public class ListDisplayFragment extends ListFragment{
+public class ListDisplayFragment extends ListFragment
+implements LoaderManager.LoaderCallbacks<List<PUPIPost>>{
 
 	private ListView mListView;
 	private LayoutInflater mInflater;
-	// for test
-	private String titles[]={"CS180","CS240","CS252","a","b","c","d","e"};
-	private String rooms[]={"LWSN B131","LWSN 1143","LWSN COMMON","a","b","c","d","e"};
-	private String rewards[]={"coke","chips","None","a","b","c","d","e"};
-
-	public View onCreateView(LayoutInflater inflater, ViewGroup container,
-			Bundle savedInstanceState) {
-		View view = inflater.inflate(R.layout.fragment_list_mode,
-				container, false);
-		mInflater = inflater;
-		ListView list = (ListView) view.findViewById(android.R.id.list);
-		list.setAdapter(new PostListAdapter());
-		
-		return view;
-	}
+	public PostListAdapter mAdapter;
 	
-	private class PostListAdapter extends BaseAdapter{
+
+	@Override public void onActivityCreated(Bundle savedInstanceState) {
+		super.onActivityCreated(savedInstanceState);
+
+		// Give some text to display if there is no data.  In a real
+		// application this would come from a resource.
+		setEmptyText("No posts");
+
+		// Create an empty adapter we will use to display the loaded data.
+		mAdapter = new PostListAdapter(getActivity());
+		setListAdapter(mAdapter);
+
+		// Start out with a progress indicator.
+		setListShown(false);
 		
-		int N=titles.length; // the number of items in ListView
+		getLoaderManager().initLoader(0, null, this);
+	}
 
+	public Loader<List<PUPIPost>> onCreateLoader(int id, Bundle args) {
+		// This is called when a new Loader needs to be created.  This
+		// sample only has one Loader with no arguments, so it is simple.
+		return new PUPIPostLoader(getActivity());
+	}
 
-		public int getCount() {
-		   // TODO Auto-generated method stub
-		   return N;
-	   	}
+	@Override
+	public void onLoadFinished(Loader<List<PUPIPost>> loader, List<PUPIPost> data) {
+		// Set the new data in the adapter.
+		mAdapter.setData(data);
 
-		public Object getItem(int position) {
-	   		// TODO Auto-generated method stub
-	   		return position;
-	   	}
+	}
 
-	   	public long getItemId(int position) {
-		// TODO Auto-generated method stub
-	   		return position;
-	   	}
-	   	
+	@Override
+	public void onLoaderReset(Loader<List<PUPIPost>> loader) {
+		// Clear the data in the adapter.
+		mAdapter.setData(null);
+	}
+
+	class PostListAdapter extends ArrayAdapter<PUPIPost>{
+		private final LayoutInflater mInflater;
+
+		public PostListAdapter(Context context) {
+			super(context, android.R.layout.simple_list_item_2);
+			mInflater = (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+		}
+
+		public void setData(List<PUPIPost> data) {
+			clear();
+			if (data != null) {
+				addAll(data);
+			}
+			// The list should now be shown.
+			if (isResumed()) {
+				setListShown(true);
+			}
+			
+		}
 
 		public View getView(int position, View convertView, ViewGroup parent) {
-	   		// TODO Auto-generated method stub
-	   		LinearLayout mItem;
-	   		if(convertView==null){
-	   			mItem = (LinearLayout) mInflater.inflate(R.layout.list_item_post, null);
-	   			((TextView)mItem.findViewById(R.id.txt_listItem_post_title)).setText(titles[position]);
-	   			((TextView)mItem.findViewById(R.id.txt_listItem_post_room)).setText(rooms[position]);
-	   			((TextView)mItem.findViewById(R.id.txt_listItem_post_reward)).setText(rewards[position]);
-            } else {
-                mItem = (LinearLayout)convertView;
-                ((TextView)mItem.findViewById(R.id.txt_listItem_post_title)).setText(titles[position]);
-	   			((TextView)mItem.findViewById(R.id.txt_listItem_post_room)).setText(rooms[position]);
-	   			((TextView)mItem.findViewById(R.id.txt_listItem_post_reward)).setText(rewards[position]);
-                
-            }
-	   		return mItem;
-	   	}
+			// TODO Auto-generated method stub
+			LinearLayout mContainer;
+
+			PUPIPost item = getItem(position);
+			if(convertView==null){
+				mContainer = (LinearLayout) mInflater.inflate(R.layout.list_item_post, null);
+			} else {
+				mContainer = (LinearLayout)convertView;
+			}
+			((TextView)mContainer.findViewById(R.id.txt_listItem_post_title)).setText(item.getTitle());
+			((TextView)mContainer.findViewById(R.id.txt_listItem_post_room)).setText(item.getLocation());
+			((TextView)mContainer.findViewById(R.id.txt_listItem_post_reward)).setText(item.getReward());
+
+			return mContainer;
+		}
 	}
 }
+
