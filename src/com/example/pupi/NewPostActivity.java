@@ -35,12 +35,12 @@ public class NewPostActivity extends Activity {
 	private String post_content = "";
 	List new_post;
 	
-	private double network_longitude = 0;
-	private double network_latitude = 0;
-	private double gps_longitude = 0;
-	private double gps_latitude = 0;
-	private double post_longitude = 0;//final value sent to server
-	private double post_latitude = 0;//final value sent to server
+	private double network_longitude = -888;
+	private double network_latitude = -888;
+	private double gps_longitude = -888;
+	private double gps_latitude = -888;
+	private double post_longitude = -888;//final value sent to server
+	private double post_latitude = -888;//final value sent to server
 
 	
 	
@@ -111,8 +111,8 @@ public class NewPostActivity extends Activity {
 			
 			
 			//judge the best between network and gps
-	        if(network_longitude == 0.0 || network_latitude == 0.0){
-	        	if(gps_longitude != 0.0 && gps_latitude != 0.0){
+	        if(network_longitude == -888 || network_latitude == -888){
+	        	if(gps_longitude != -888 && gps_latitude != -888){
 	        		//if network is down but gps is good, use gps value
 	        		post_longitude = gps_longitude;
 	        		post_latitude = gps_latitude;
@@ -122,8 +122,8 @@ public class NewPostActivity extends Activity {
 	        		Toast.makeText( getApplicationContext(), "Location service unavailable", Toast.LENGTH_SHORT ).show();
 	        	}
 	        }
-	        else if(gps_longitude == 0.0 || gps_latitude == 0.0){
-	        	if(network_longitude != 0.0 && network_latitude != 0.0){
+	        else if(gps_longitude == -888 || gps_latitude == -888){
+	        	if(network_longitude != -888 && network_latitude != -888){
 	        		//if gps is down but network is good, use network value
 	        		post_longitude = network_longitude;
 	        		post_latitude = network_latitude;
@@ -197,8 +197,8 @@ public class NewPostActivity extends Activity {
 		public void onProviderDisabled(String provider)
 		{
 			Toast.makeText( getApplicationContext(), "Network Disabled! please open network.", Toast.LENGTH_SHORT ).show();
-			network_longitude = 0.0;
-			network_latitude = 0.0;
+			network_longitude = -888;
+			network_latitude = -888;
 		}
 
 		@Override
@@ -238,8 +238,8 @@ public class NewPostActivity extends Activity {
 			public void onProviderDisabled(String provider)
 			{
 				Toast.makeText( getApplicationContext(), "GPS Disabled! please open GPS.", Toast.LENGTH_SHORT ).show();
-				gps_longitude = 0.0;
-				gps_latitude = 0.0;
+				gps_longitude = -888;
+				gps_latitude = -888;
 			}
 
 			@Override
