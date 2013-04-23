@@ -11,6 +11,7 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.View;
@@ -85,6 +86,12 @@ public class LoginActivity extends Activity {
 		protected Object doInBackground(Object... params) {
 			String username = edit_userName.getText().toString();
 			String password = edit_pwd.getText().toString();
+			try{
+				password = SHA1.SHA1(password);
+			}
+			catch (Exception e){
+				Log.d("sha1_rege",password);
+			}
 			String resultString = null;
 			List<NameValuePair> nameValPair = new ArrayList<NameValuePair>();
 			nameValPair.add(new BasicNameValuePair("username", username));
@@ -145,6 +152,12 @@ public class LoginActivity extends Activity {
 		protected Object doInBackground(Object... params) {
 			String username = edit_userName.getText().toString();
 			String password = edit_pwd.getText().toString();
+			try{
+				password = SHA1.SHA1(password);
+			}
+			catch(Exception e){
+				Log.d("sha1_rege",password);
+			}
 			String resultString = null;
 			List<NameValuePair> nameValPair = new ArrayList<NameValuePair>();
 			nameValPair.add(new BasicNameValuePair("username", username));
