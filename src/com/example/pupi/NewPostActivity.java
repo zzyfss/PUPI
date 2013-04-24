@@ -88,6 +88,43 @@ public class NewPostActivity extends Activity {
 		post_loc = edtx_post_loc.getText().toString();
 		post_content = edtx_post_content.getText().toString();
 		
+		
+		//judge the best between network and gps
+        if(network_longitude == -888 || network_latitude == -888){
+        	if(gps_longitude != -888 && gps_latitude != -888){
+        		//if network is down but gps is good, use gps value
+        		post_longitude = gps_longitude;
+        		post_latitude = gps_latitude;
+        	}
+        	else{
+        		//if both are down, toast error
+        		Toast.makeText( getApplicationContext(), "Location service unavailable", Toast.LENGTH_SHORT ).show();
+        		return;
+        	}
+        }
+        else if(gps_longitude == -888 || gps_latitude == -888){
+        	if(network_longitude != -888 && network_latitude != -888){
+        		//if gps is down but network is good, use network value
+        		post_longitude = network_longitude;
+        		post_latitude = network_latitude;
+        	}
+        	else{
+        		//if both are down, toast error
+        		Toast.makeText( getApplicationContext(), "Location service unavailable", Toast.LENGTH_SHORT ).show();
+        		return;
+        	}
+        }
+        else{
+        	//if both are good, use Network value
+    		post_longitude = network_longitude;
+    		post_latitude = network_latitude;
+        }
+					
+        if(post_longitude == -888 || post_latitude == -888){//if can't get location
+        	Toast.makeText(getBaseContext(),"Location service unavailable", Toast.LENGTH_SHORT).show();
+			return;	
+        }
+		
 	
 		
 		if(post_title.equals("")){
@@ -106,42 +143,10 @@ public class NewPostActivity extends Activity {
 			p.setReward(post_reward);
 			p.setLocation(post_loc);
 			p.setContent(post_content);
-			p.setPoster(MainActivity.userId);
-			
-			
-			
-			//judge the best between network and gps
-	        if(network_longitude == -888 || network_latitude == -888){
-	        	if(gps_longitude != -888 && gps_latitude != -888){
-	        		//if network is down but gps is good, use gps value
-	        		post_longitude = gps_longitude;
-	        		post_latitude = gps_latitude;
-	        	}
-	        	else{
-	        		//if both are down, toast error
-	        		Toast.makeText( getApplicationContext(), "Location service unavailable", Toast.LENGTH_SHORT ).show();
-	        	}
-	        }
-	        else if(gps_longitude == -888 || gps_latitude == -888){
-	        	if(network_longitude != -888 && network_latitude != -888){
-	        		//if gps is down but network is good, use network value
-	        		post_longitude = network_longitude;
-	        		post_latitude = network_latitude;
-	        	}
-	        	else{
-	        		//if both are down, toast error
-	        		Toast.makeText( getApplicationContext(), "Location service unavailable", Toast.LENGTH_SHORT ).show();
-	        	}
-	        }
-	        else{
-	        	//if both are good, use Network value
-	    		post_longitude = network_longitude;
-	    		post_latitude = network_latitude;
-	        }
-						
+			p.setPoster(MainActivity.userId);		
 			p.setLocx(post_latitude);//latitude
 			p.setLocy(post_longitude);//longitude
-			
+						
 			new_post = p.getPostPackage();
 			new AsyncPostAgent().execute(this);
 			
