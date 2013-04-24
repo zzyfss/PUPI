@@ -7,9 +7,9 @@ import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.widget.EditText;
@@ -20,6 +20,7 @@ public class EditProfileActivity extends Activity {
 	private EditText name;
 	private EditText email;
 	private EditText intro;
+	private ProgressDialog mDilg;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +43,7 @@ public class EditProfileActivity extends Activity {
 	}
 	
 	public void updateProfile(View v){
+		mDilg= ProgressDialog.show(this,"","Updating...",false,true);
 		new AsyncUpdateinfoAgent().execute(this);
 	}
 
@@ -64,12 +66,14 @@ private class AsyncUpdateinfoAgent extends AsyncTask{
 		protected void onPostExecute(Object result) {
 		
 			String  stringResult=(String)result;
+			mDilg.dismiss();
 		//	System.out.println(s.length()+s+s);
 			if(stringResult.contains("success")){
-				Toast.makeText(getBaseContext(), "Success", Toast.LENGTH_SHORT).show();
+				Toast.makeText(getBaseContext(), "Update success", Toast.LENGTH_SHORT).show();
+				
 				finish();
 			}else{
-				Toast.makeText(getBaseContext(), "Fail", Toast.LENGTH_SHORT).show();
+				Toast.makeText(getBaseContext(), "Server error. Please try again.", Toast.LENGTH_SHORT).show();
 			}
 		}
 	}

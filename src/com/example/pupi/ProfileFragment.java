@@ -7,11 +7,11 @@ import java.util.List;
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -23,8 +23,9 @@ public class ProfileFragment extends Fragment{
 	private TextView text_name;
 	private TextView text_email;
 	private TextView text_intro;
+	private ProgressDialog mDlg;
 
-
+	
 	
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
@@ -42,24 +43,38 @@ public class ProfileFragment extends Fragment{
 				intent.putExtra("NAME", text_name.getText().toString());
 				intent.putExtra("EMAIL", text_email.getText().toString());
 				intent.putExtra("INTRO", text_intro.getText().toString());
+				
 				v.getContext().startActivity(intent);
 				
 			}
 			
 		});
+		
 		return view;
 	}
 	
+	
+	@Override
+	public void onCreate(Bundle savedInstanceState) {
+		// TODO Auto-generated method stub
+		super.onCreate(savedInstanceState);
+		mDlg= ProgressDialog.show(getActivity(),"","Loading...",false,true);
+		new AsyncGetinfoAgent().execute(this);
+		
+	}
+
+
 	@Override
 	public void onResume() {
 		// TODO Auto-generated method stub
-		super.onResume();
-		new AsyncGetinfoAgent().execute(this);
+		super.onResume();		
 	}
+	
 	private class AsyncGetinfoAgent extends AsyncTask{
 		
 		@Override
 		protected Object doInBackground(Object... params) {
+					
 				String username = MainActivity.userId;
 				String resultString = null;
 				List<NameValuePair> nameValPair = new ArrayList<NameValuePair>();
@@ -77,6 +92,7 @@ public class ProfileFragment extends Fragment{
 			text_name.setText(name);
 			text_email.setText(email);
 			text_intro.setText(intro);
+			mDlg.dismiss();
 			
 		}
 	}

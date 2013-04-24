@@ -29,8 +29,7 @@ public class HomeFragment extends Fragment
 			Bundle savedInstanceState) {
 
 		mMapDisplay = new SupportMapFragment();
-		mListDisplay = new ListDisplayFragment();
-		
+		mListDisplay = ListDisplayFragment.newInstance(true);
 		mView = inflater.inflate(R.layout.fragment_home,
 				container, false);
 		Switch s = (Switch)mView.findViewById(R.id.btn_switch_mode);

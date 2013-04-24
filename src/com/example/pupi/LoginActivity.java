@@ -157,13 +157,13 @@ public class LoginActivity extends Activity {
 		protected void onPostExecute(Object result) {
 			dilg_progress.dismiss();
 			String r = (String)result;
-			if(r.startsWith("success")){
+			if(r.contains("success")){
 				Toast.makeText(getApplicationContext(), "Sign up success!", Toast.LENGTH_SHORT).show();
 				Intent intent = new Intent(LoginActivity.this,MainActivity.class);
 				intent.putExtra("USERID",edit_userName.getText().toString());
 				startActivity(intent);
 				finish();
-			}else if(r.startsWith("fail")){
+			}else if(r.contains("fail")){
 				Toast.makeText(getApplicationContext(), "Username Unavailable. Please try again", Toast.LENGTH_SHORT).show();
 			}
 			else if(r.equals("IOE")){
