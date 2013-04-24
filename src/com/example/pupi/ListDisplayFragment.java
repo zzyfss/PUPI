@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.support.v4.app.ListFragment;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.Loader;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,11 +23,35 @@ implements LoaderManager.LoaderCallbacks<List<PUPIPost>>{
 	private ListView mListView;
 	private LayoutInflater mInflater;
 	public PostListAdapter mAdapter;
-	
+	private boolean isPublic;
 
+	static ListDisplayFragment newInstance(boolean isPublic) {
+        ListDisplayFragment f = new ListDisplayFragment();
+
+        // Supply num input as an argument.
+        Bundle args = new Bundle();
+        args.putBoolean("PUBLIC", isPublic);
+        f.setArguments(args);
+
+        return f;
+    }
+
+    /**
+     * When creating, retrieve this instance's number from its arguments.
+     */
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        isPublic = getArguments() != null ? getArguments().getBoolean("PUBLIC") : false;
+       
+        if(isPublic){
+        	Log.d("DEBUG","isPublic");   	
+        }
+    }
+    
 	@Override public void onActivityCreated(Bundle savedInstanceState) {
 		super.onActivityCreated(savedInstanceState);
-
+		  
 		// Give some text to display if there is no data.  In a real
 		// application this would come from a resource.
 		setEmptyText("No posts");
@@ -37,6 +62,8 @@ implements LoaderManager.LoaderCallbacks<List<PUPIPost>>{
 
 		// Start out with a progress indicator.
 		setListShown(false);
+		
+		
 		
 		getLoaderManager().initLoader(0, null, this);
 	}
@@ -66,6 +93,7 @@ implements LoaderManager.LoaderCallbacks<List<PUPIPost>>{
 		public PostListAdapter(Context context) {
 			super(context, android.R.layout.simple_list_item_2);
 			mInflater = (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+			setNotifyOnChange(true);
 		}
 
 		public void setData(List<PUPIPost> data) {
@@ -73,9 +101,13 @@ implements LoaderManager.LoaderCallbacks<List<PUPIPost>>{
 			if (data != null) {
 				addAll(data);
 			}
+			Log.d("DEBUG","Refresh List");
 			// The list should now be shown.
 			if (isResumed()) {
 				setListShown(true);
+			}
+			else{
+				setListShownNoAnimation(true);
 			}
 			
 		}
