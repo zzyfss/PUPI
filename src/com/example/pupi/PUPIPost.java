@@ -11,8 +11,8 @@ import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
 
 
-public class PUPIPost {
-	private int post_id;
+public class PUPIPost{
+	private String post_id;
 	private String poster;
 	private String helper;
 	private String location;
@@ -63,10 +63,11 @@ public class PUPIPost {
 		title = values[6];
 		content = values[7];
 		reward = values[8];
+		post_id = values[9];
 	}
 	
 	
-	public int getPost_id(){
+	public String getPost_id(){
 		return post_id;
 	}
 	

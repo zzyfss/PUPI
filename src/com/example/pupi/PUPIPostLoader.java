@@ -29,6 +29,9 @@ public class PUPIPostLoader extends AsyncTaskLoader<List<PUPIPost>> {
 		// Retrieve all known applications.
 		List<PUPIPost> posts = new ArrayList<PUPIPost>();
 		String result = PHPLoader.getStringFromPhp(PHPLoader.GETPOST_PHP,new ArrayList());
+		if(result.contains("failphpusucks")){
+			return posts;
+		}
 		result = result.substring(8);
 		//Log.d("Server-result",result);
 		String[] temp = result.split("/newline");

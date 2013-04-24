@@ -4,6 +4,7 @@ package com.example.pupi;
 import java.util.List;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.ListFragment;
 import android.support.v4.app.LoaderManager;
@@ -12,6 +13,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.LinearLayout;
 import android.widget.ListView;
@@ -47,6 +50,7 @@ implements LoaderManager.LoaderCallbacks<List<PUPIPost>>{
         if(isPublic){
         	Log.d("DEBUG","isPublic");   	
         }
+
     }
     
 	@Override public void onActivityCreated(Bundle savedInstanceState) {
@@ -66,6 +70,25 @@ implements LoaderManager.LoaderCallbacks<List<PUPIPost>>{
 		
 		
 		getLoaderManager().initLoader(0, null, this);
+		
+        ListView lv = getListView();
+        lv.setOnItemClickListener(new OnItemClickListener(){
+			@Override
+			public void onItemClick(AdapterView<?> parent, View view, int position,
+					long id) {
+				// TODO Auto-generated method stub
+				PUPIPost p = (PUPIPost) parent.getAdapter().getItem(position);
+				Intent intent = new Intent(getActivity(), PostDetailActivity.class);
+				intent.putExtra("POSTER",p.getPoster());
+				intent.putExtra("HELPER", p.getHelper());
+				intent.putExtra("LOCATION",p.getLocation());
+				intent.putExtra("TITLE",p.getTitle());
+				intent.putExtra("CONTENT", p.getContent());
+				intent.putExtra("REWARD", p.getReward());
+				intent.putExtra("POST_ID", p.getPost_id());
+				startActivity(intent);
+			}
+        });
 	}
 
 	public Loader<List<PUPIPost>> onCreateLoader(int id, Bundle args) {

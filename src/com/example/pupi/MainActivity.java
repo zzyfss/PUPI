@@ -30,7 +30,7 @@ public class MainActivity extends FragmentActivity {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_main);
         
-        userId = getIntent().getStringExtra("USERID").toString();
+        userId = getIntent().getStringExtra("USERID");
         Log.d("USERID",userId);
         
         mTabHost = (FragmentTabHost) findViewById(android.R.id.tabhost);
