@@ -15,11 +15,17 @@ public class TrackFragment extends Fragment{
 	private ListDisplayFragment mListDisplay;
 	private View mView;
 	private Button btn_refresh;
+	
+	public void onCreate(Bundle savedInstanceState) {
+		// TODO Auto-generated method stub
+		super.onCreate(savedInstanceState);
+		
+		
+	}
 
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
-
-		mListDisplay = ListDisplayFragment.newInstance(false);
+	
 		mView = inflater.inflate(R.layout.fragment_track,
 				container, false);
 		btn_refresh = (Button)mView.findViewById(R.id.btn_track_refresh);
@@ -34,9 +40,11 @@ public class TrackFragment extends Fragment{
 			
 		});
 		
+		mListDisplay = ListDisplayFragment.newInstance(false);
 		FragmentTransaction transaction = getFragmentManager().beginTransaction();
 		transaction.add(R.id.container_track,mListDisplay);
 		transaction.commit();
+		
 		return mView;
 	}
 	

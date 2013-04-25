@@ -5,6 +5,7 @@ import java.util.List;
 
 import android.content.Context;
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Handler.Callback;
@@ -34,6 +35,7 @@ implements LoaderManager.LoaderCallbacks<List<PUPIPost>>, Callback{
 	private boolean isPublic;
 	public PUPIPostLoader mLoader;
 	public Handler mHandler;
+	private MediaPlayer refresh_sound;
 
 	// Indicator of refreshing
 	private boolean isRefreshing=false;
@@ -68,6 +70,7 @@ implements LoaderManager.LoaderCallbacks<List<PUPIPost>>, Callback{
 
 		mAdapter = new PostListAdapter(getActivity());
 		getLoaderManager().initLoader(0, null, this);
+		refresh_sound = MediaPlayer.create(getActivity(), R.raw.refresh_sounds);
 
 	}
 
@@ -145,6 +148,8 @@ implements LoaderManager.LoaderCallbacks<List<PUPIPost>>, Callback{
 			if (isResumed() || isRefreshing) {
 				isRefreshing=false;
 				Log.d("DEBUG","isResumed");
+				//add refresh sound
+				refresh_sound.start();
 				setListShown(true);
 			}
 			//			else{
