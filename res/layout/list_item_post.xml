@@ -9,7 +9,6 @@
         android:layout_marginTop="10dp"
         android:layout_width="80dp"
         android:layout_height="80dp"
-        android:src="@drawable/kotomi2"
          />
 
     <LinearLayout
@@ -41,6 +40,7 @@
             	android:id="@+id/txt_listItem_post_room0"
             	android:layout_height="wrap_content"
             	android:layout_width="wrap_content"
+            	android:textColor="#0099CC"
             	android:text="Location: "
             	android:textAppearance="?android:attr/textAppearanceSmall" />
         	<TextView
@@ -61,6 +61,7 @@
             	
             	android:layout_height="wrap_content"
             	android:layout_width="wrap_content"
+            	android:textColor="#0099CC"
             	android:text="Reward: "
             	android:textAppearance="?android:attr/textAppearanceSmall" />
         	<TextView

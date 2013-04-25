@@ -6,20 +6,13 @@
 
     <RelativeLayout
         android:id="@+id/RL_account_top_bar"
-        android:background="@android:color/holo_blue_light"
-        android:layout_width="fill_parent"
-        android:layout_height="56dp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentTop="true" >
+        style="@style/TitleBarStyle" >
 
         <Button
             android:id="@+id/btn_edit"
             style="@style/ButtonStyle"
             android:layout_width="100dp"
             android:layout_height="48dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginTop="4dp"
             android:text="Edit" />
     </RelativeLayout>
 
@@ -40,6 +33,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="14dp"
         android:ems="10"
+        android:textColor="#0099CC"
         android:text="Name:"
         android:textAppearance="?android:attr/textAppearanceMedium" >
     </TextView>
@@ -63,6 +57,7 @@
         android:layout_below="@+id/txt_account_name"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="14dp"
+        android:textColor="#0099CC"
         android:ems="10"
         android:text="Email:"
         android:textAppearance="?android:attr/textAppearanceMedium" >
@@ -86,6 +81,7 @@
         android:layout_below="@+id/txt_account_email"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="14dp"
+        android:textColor="#0099CC"
         android:ems="10"
         android:text="Self introduction:"
         android:textAppearance="?android:attr/textAppearanceMedium" >

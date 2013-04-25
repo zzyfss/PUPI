@@ -41,7 +41,7 @@
             <TextView
                 android:id="@+id/txt_post_detail_name"
                 android:layout_width="wrap_content"
-                android:layout_height="30dp"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:text="User Name:"
                 android:textAppearance="?android:attr/textAppearanceLarge" />
@@ -68,6 +68,7 @@
             android:id="@+id/txt_post_detail_hel1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textColor="#0099CC"
             android:lines="1"
             android:text="Helper: "
             android:textAppearance="?android:attr/textAppearanceMedium"
@@ -100,6 +101,7 @@
             android:layout_height="wrap_content"
             android:lines="1"
             android:text="Reward: "
+            android:textColor="#0099CC"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:textIsSelectable="true" />
         
@@ -128,6 +130,7 @@
             android:layout_height="wrap_content"
             android:lines="1"
             android:text="Location: "
+            android:textColor="#0099CC"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:textIsSelectable="true" />
         
@@ -147,6 +150,7 @@
         android:layout_below="@+id/LL_post_detail_location"
         android:layout_marginLeft="15dp"
         android:text="Description: "
+        android:textColor="#0099CC"
         android:textAppearance="?android:attr/textAppearanceMedium" >
     </TextView>
 

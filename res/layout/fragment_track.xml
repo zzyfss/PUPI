@@ -11,10 +11,10 @@
 
         <Button
             android:id="@+id/btn_track_refresh"
-            android:layout_width="100dp"
-            style="@style/ButtonStyle"
+            android:layout_width="48dp"
+            style="@style/RefreshStyle"
             android:layout_height="48dp"
-            android:text="Refresh" />         
+            />         
       
     </RelativeLayout>
 
