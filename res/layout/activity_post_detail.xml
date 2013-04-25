@@ -51,7 +51,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="30dp"
                 android:layout_marginTop="10dp"
-                android:text="Title:"
+                android:text="Title: "
                 android:textAppearance="?android:attr/textAppearanceMedium" />
         </LinearLayout>
     </LinearLayout>
@@ -69,7 +69,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:lines="1"
-            android:text="Helper:"
+            android:text="Helper: "
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:textIsSelectable="true" />
         <TextView
@@ -99,7 +99,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:lines="1"
-            android:text="Reward:"
+            android:text="Reward: "
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:textIsSelectable="true" />
         
@@ -127,7 +127,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:lines="1"
-            android:text="Location:"
+            android:text="Location: "
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:textIsSelectable="true" />
         
@@ -146,7 +146,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/LL_post_detail_location"
         android:layout_marginLeft="15dp"
-        android:text="Description:"
+        android:text="Description: "
         android:textAppearance="?android:attr/textAppearanceMedium" >
     </TextView>
 
