@@ -11,11 +11,10 @@ import android.os.Bundle;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
-import android.util.Log;
-import android.view.Menu;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -44,6 +43,22 @@ public class PostDetailActivity extends Activity {
 		loc.setText(intent.getStringExtra("LOCATION"));
 		des.setText(intent.getStringExtra("CONTENT"));
 		Button help = (Button)findViewById(R.id.btn_go_to_help);
+		
+		
+		ImageView dialog_profile_img = (ImageView)findViewById(R.id.img_post_detail_picture);
+		String poster_name = intent.getStringExtra("POSTER");
+		
+		if(poster_name.equalsIgnoreCase("zheng")){
+			dialog_profile_img.setImageResource(R.drawable.zheng);
+		}else if(poster_name.equalsIgnoreCase("sun")){
+			dialog_profile_img.setImageResource(R.drawable.sun);
+		}else if(poster_name.equalsIgnoreCase("mao")){
+			dialog_profile_img.setImageResource(R.drawable.mao);
+		}else if(poster_name.equalsIgnoreCase("king")){
+			dialog_profile_img.setImageResource(R.drawable.king);
+		}else{
+			dialog_profile_img.setImageResource(R.drawable.guest);
+		}
 	}
 	
 	public void help(View view){

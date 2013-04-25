@@ -25,7 +25,7 @@
         android:layout_below="@+id/RL_post_detail_top_bar" >
 
         <ImageView
-            android:id="@+id/img_listItem_post_picture"
+            android:id="@+id/img_post_detail_picture"
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:layout_marginLeft="10dp"
