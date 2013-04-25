@@ -62,24 +62,21 @@
             android:layout_height="40dp"
       		android:layout_marginLeft="15dp"
             android:layout_below="@+id/LL_post_detail_1"
-             android:layout_centerHorizontal="true"
              >   
 
         <TextView
             android:id="@+id/txt_post_detail_hel1"
-            android:layout_width="100dp"
-            android:layout_height="30dp"
-            android:layout_margin="15dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:lines="1"
             android:text="Helper:"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:textIsSelectable="true" />
-        
         <TextView
             android:id="@+id/txt_post_detail_hel2"
             android:layout_width="match_parent"
-            android:layout_height="30dp"
-            android:layout_margin="15dp"
+            android:layout_height="wrap_content"
+            
             android:ems="10"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:textIsSelectable="true" />
@@ -95,14 +92,12 @@
             android:layout_height="40dp"
             android:layout_marginLeft="15dp"
             android:layout_below="@+id/LL_post_detail_help"
-             android:layout_centerHorizontal="true"
              >   
 
         <TextView
             android:id="@+id/txt_post_detail_reward1"
-            android:layout_width="100dp"
-            android:layout_height="30dp"
-            android:layout_margin="15dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:lines="1"
             android:text="Reward:"
             android:textAppearance="?android:attr/textAppearanceMedium"
@@ -110,9 +105,8 @@
         
 <TextView
             android:id="@+id/txt_post_detail_reward2"
-    		android:layout_width="match_parent"
-            android:layout_height="30dp"
-            android:layout_margin="15dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:lines="1"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:textIsSelectable="true" />
@@ -126,14 +120,12 @@
             android:layout_height="40dp"
 			android:layout_marginLeft="15dp"
             android:layout_below="@+id/LL_post_detail_reward"
-             android:layout_centerHorizontal="true"
              >   
 
         <TextView
             android:id="@+id/txt_post_detail_location1"
-            android:layout_width="100dp"
-            android:layout_height="30dp"
-            android:layout_margin="15dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:lines="1"
             android:text="Location:"
             android:textAppearance="?android:attr/textAppearanceMedium"
@@ -141,9 +133,8 @@
         
 		<TextView
             android:id="@+id/txt_post_detail_location2"
-    		android:layout_width="match_parent"
-            android:layout_height="30dp"
-            android:layout_margin="15dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:lines="1"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:textIsSelectable="true" />
@@ -154,8 +145,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/LL_post_detail_location"
-        android:layout_marginLeft="22dp"
-        android:layout_marginTop="15dp"
+        android:layout_marginLeft="15dp"
         android:text="Description:"
         android:textAppearance="?android:attr/textAppearanceMedium" >
     </TextView>
