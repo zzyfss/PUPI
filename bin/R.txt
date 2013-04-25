@@ -127,6 +127,7 @@ int menu post_detail 0x7f0c0004
 int raw hint_high 0x7f060000
 int raw hint_low 0x7f060001
 int raw refresh_sounds 0x7f060002
+int raw success_sound 0x7f060003
 int string action_settings 0x7f080012
 int string app_name 0x7f080011
 int string auth_client_availability_notification_title 0x7f08000e

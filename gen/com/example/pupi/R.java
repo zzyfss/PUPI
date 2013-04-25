@@ -266,6 +266,7 @@ containing a value of this type.
         public static final int hint_high=0x7f060000;
         public static final int hint_low=0x7f060001;
         public static final int refresh_sounds=0x7f060002;
+        public static final int success_sound=0x7f060003;
     }
     public static final class string {
         public static final int action_settings=0x7f080012;

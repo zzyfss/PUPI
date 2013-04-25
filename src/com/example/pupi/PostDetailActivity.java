@@ -6,6 +6,7 @@ import java.util.List;
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
 
+import android.media.MediaPlayer;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.app.Activity;
@@ -23,6 +24,8 @@ public class PostDetailActivity extends Activity {
 	Intent intent;
 	TextView poster;
 	private ProgressDialog mDilg;
+	private MediaPlayer success_sound;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -59,6 +62,8 @@ public class PostDetailActivity extends Activity {
 		}else{
 			dialog_profile_img.setImageResource(R.drawable.guest);
 		}
+		
+		 success_sound = MediaPlayer.create(this, R.raw.success_sound);
 	}
 	
 	public void help(View view){
@@ -89,10 +94,11 @@ public class PostDetailActivity extends Activity {
 			mDilg.dismiss();
 			if(((String)result).contains("success")){
 				Toast.makeText(getApplicationContext(), "Success! Thank you!", Toast.LENGTH_SHORT).show();
+				success_sound.start();
 				finish();
 			}
 			if(((String)result).contains("fail")){
-				Toast.makeText(getApplicationContext(), "The is helped!", Toast.LENGTH_SHORT).show();
+				Toast.makeText(getApplicationContext(), "Someone is helping!", Toast.LENGTH_SHORT).show();
 				finish();
 			}
 		}

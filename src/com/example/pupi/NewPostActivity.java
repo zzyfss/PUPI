@@ -9,6 +9,7 @@ import org.apache.http.message.BasicNameValuePair;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
+import android.media.MediaPlayer;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.app.Activity;
@@ -45,6 +46,8 @@ public class NewPostActivity extends Activity {
 	
 	private ProgressDialog mDilg;
 
+	private MediaPlayer success_post_sound;
+	private MediaPlayer fail_post_sound;
 	
 	
 	
@@ -58,6 +61,9 @@ public class NewPostActivity extends Activity {
 		edtx_post_reward = (EditText)findViewById(R.id.editText_post_reward);
 		edtx_post_loc = (EditText)findViewById(R.id.editText_post_loc);
 		edtx_post_content = (EditText)findViewById(R.id.editText_post_content);
+		
+		success_post_sound = MediaPlayer.create(this, R.raw.success_sound);
+		fail_post_sound = MediaPlayer.create(this, R.raw.hint_low);
 		
 		/* Use the LocationManager class to obtain locations from network*/
 		LocationManager mlocManager_network = (LocationManager)getSystemService(Context.LOCATION_SERVICE);
@@ -177,9 +183,11 @@ public class NewPostActivity extends Activity {
 		protected void onPostExecute(Object result) {
 			mDilg.dismiss();
 			if(((String)result).startsWith("success")){
+				success_post_sound.start();
 				Toast.makeText(getApplicationContext(), "Post Success!", Toast.LENGTH_SHORT).show();
 				finish();
 			}else if(((String)result).startsWith("fail")){
+				fail_post_sound.start();
 				Toast.makeText(getApplicationContext(), "Server Busy, please try again later.", Toast.LENGTH_SHORT).show();
 			}
 		}
