@@ -11,6 +11,9 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Handler.Callback;
+import android.os.Message;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,12 +22,12 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
-public class ProfileFragment extends Fragment{
+public class ProfileFragment extends Fragment implements Callback{
 	private TextView text_name;
 	private TextView text_email;
 	private TextView text_intro;
 	private ProgressDialog mDlg;
-
+	public static Handler mHandler;
 	
 	
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -43,7 +46,6 @@ public class ProfileFragment extends Fragment{
 				intent.putExtra("NAME", text_name.getText().toString());
 				intent.putExtra("EMAIL", text_email.getText().toString());
 				intent.putExtra("INTRO", text_intro.getText().toString());
-				
 				v.getContext().startActivity(intent);
 				
 			}
@@ -59,6 +61,7 @@ public class ProfileFragment extends Fragment{
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		mDlg= ProgressDialog.show(getActivity(),"","Loading...",false,true);
+		mHandler = new Handler(this);
 		new AsyncGetinfoAgent().execute(this);
 		
 	}
@@ -72,6 +75,7 @@ public class ProfileFragment extends Fragment{
 	
 	private class AsyncGetinfoAgent extends AsyncTask{
 		
+
 		@Override
 		protected Object doInBackground(Object... params) {
 					
@@ -95,6 +99,16 @@ public class ProfileFragment extends Fragment{
 			mDlg.dismiss();
 			
 		}
+	}
+
+	@Override
+	public boolean handleMessage(Message msg) {
+		// TODO Auto-generated method stub
+		Bundle b = (Bundle) msg.obj;
+		text_name.setText(b.getString("NAME"));
+		text_email.setText(b.getString("EMAIL"));
+		text_intro.setText(b.getString("INTRO"));
+		return false;
 	}
 	
 }
