@@ -75,7 +75,7 @@ public class PostDetailActivity extends Activity {
 				finish();
 			}
 			if(((String)result).contains("fail")){
-				Toast.makeText(getApplicationContext(), "The is helped", Toast.LENGTH_SHORT).show();
+				Toast.makeText(getApplicationContext(), "The is helped!", Toast.LENGTH_SHORT).show();
 				finish();
 			}
 		}
