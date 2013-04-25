@@ -50,6 +50,9 @@ implements LoaderManager.LoaderCallbacks<List<PUPIPost>>{
         if(isPublic){
         	Log.d("DEBUG","isPublic");   	
         }
+        else{
+        	Log.d("DEBUG","isPrivate");
+        }
 
     }
     
