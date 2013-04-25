@@ -69,7 +69,7 @@
         </activity>
         <activity
             android:name="com.example.pupi.PostDetailActivity"
-            android:theme="@android:style/Theme.Holo.Dialog" 
+            android:theme="@android:style/Theme.Holo.Light.Dialog" 
             android:label="@string/title_activity_post_detail" >
         </activity>
     </application>

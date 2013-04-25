@@ -5,6 +5,9 @@ import java.util.List;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Handler.Callback;
+import android.os.Message;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.Loader;
 import android.util.Log;
@@ -19,25 +22,33 @@ import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 public class MapDisplayFragment extends SupportMapFragment
-implements LoaderManager.LoaderCallbacks<List<PUPIPost>>{
-	
+implements LoaderManager.LoaderCallbacks<List<PUPIPost>>, Callback{
+
 	private final double PURDUE_LATITUDE=40.427796;
 	private final double PURDUE_LONGITUDE=-86.913736;
 	private final int PURDUE_ZOOM_MAGNITUDE=16;
-	
+
 	List<PUPIPost> mPosts=null;
 	// The value is the corresponding post of Key marker
 	HashMap<Marker,PUPIPost> markerPostMapping = new HashMap<Marker, PUPIPost>();
-	
+	public Handler mHandler=null;
+
+
+	@Override
+	public void onCreate(Bundle savedInstanceState) {
+		// TODO Auto-generated method stub
+		super.onCreate(savedInstanceState);
+		mHandler = new Handler(this);
+		// Prepare Loader
+		getLoaderManager().initLoader(0, null, this);	
+	}
+
 	@Override
 	public void onActivityCreated(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onActivityCreated(savedInstanceState);
-		
-		
-		// Prepare Loader
-		getLoaderManager().initLoader(0, null, this);		
-		
+
+
 		GoogleMap map = getMap();
 		if(map==null){
 			Toast.makeText(getActivity(), "Google Map service unvailable.", Toast.LENGTH_SHORT).show();
@@ -51,7 +62,7 @@ implements LoaderManager.LoaderCallbacks<List<PUPIPost>>{
 	public Loader<List<PUPIPost>> onCreateLoader(int id, Bundle args) {
 		// This is called when a new Loader needs to be created.  This
 		// sample only has one Loader with no arguments, so it is simple.
-		
+
 		// Map view loads public posts
 		return new PUPIPostLoader(getActivity(),true);
 	}
@@ -65,12 +76,12 @@ implements LoaderManager.LoaderCallbacks<List<PUPIPost>>{
 		if(mPosts!=null){
 			for(PUPIPost p :mPosts){
 				LatLng loc = new LatLng(p.getLocx(),p.getLocy());
-				Marker marker = map.addMarker(new MarkerOptions().position(loc));
+				Marker marker = map.addMarker(new MarkerOptions().position(loc).title(p.getTitle()));
 				markerPostMapping.put(marker, p);
 			}
 		}
 	}
-	
+
 	@Override
 	public void onLoadFinished(Loader<List<PUPIPost>> loader, List<PUPIPost> data) {
 		// Set the new data in the adapter.
@@ -85,7 +96,7 @@ implements LoaderManager.LoaderCallbacks<List<PUPIPost>>{
 		markerPostMapping.clear();
 		mPosts = null;
 	}
-	
+
 	private class SimpleMarkerListener implements OnMarkerClickListener {
 
 		@Override
@@ -103,8 +114,18 @@ implements LoaderManager.LoaderCallbacks<List<PUPIPost>>{
 			getActivity().startActivity(intent);
 			return true;
 		}
-		
-		
+
+
 	}
-	
+
+	@Override
+	public boolean handleMessage(Message msg) {
+		// TODO Auto-generated method stub
+		if(msg.what==0){
+			getLoaderManager().restartLoader(0, null, this);
+			Log.d("DEBUG","Refresh Map");
+		}
+		return false;
+	}
+
 }

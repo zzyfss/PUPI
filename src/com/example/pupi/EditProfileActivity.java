@@ -2,8 +2,6 @@ package com.example.pupi;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
@@ -46,26 +44,8 @@ public class EditProfileActivity extends Activity {
 	}
 
 	public void updateProfile(View v){
-		
-		
-		//check email
-		Pattern regex=Pattern.compile("^([a-z0-9A-Z]+[-|\\.]?)+[a-z0-9A-Z]*@([a-z0-9A-Z]+(-[a-z0-9A-Z]+)?\\.)+[a-zA-Z]{2,}$");
-		Matcher inputEmail=regex.matcher(email.getText().toString());
-		if(!inputEmail.matches()){
-			Toast.makeText(EditProfileActivity.this,"Invalid email address", Toast.LENGTH_SHORT).show();
-		}
-		
-		else if(email.getText().toString().equals("")){
-			Toast.makeText(EditProfileActivity.this,"Please enter your email", Toast.LENGTH_SHORT).show();
-		}
-		else{
-			mDilg= ProgressDialog.show(this,"","Updating...",false,true);
-			new AsyncUpdateinfoAgent().execute(this);
-		}
-		
-		
-		
-		
+		mDilg= ProgressDialog.show(this,"","Updating...",false,true);
+		new AsyncUpdateinfoAgent().execute(this);
 	}
 
 	private class AsyncUpdateinfoAgent extends AsyncTask{

@@ -56,7 +56,7 @@ public class PUPIPostLoader extends AsyncTaskLoader<List<PUPIPost>> {
 		for(int i=0; i<temp.length; i++){
 			//Log.d("Index", Integer.toString(i));
 			PUPIPost p = new PUPIPost(temp[i]);
-		//	Log.d("Posts",temp[i]);
+//			Log.d("Posts",temp[i]);
 			posts.add(p);
 		}	
 

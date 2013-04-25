@@ -54,6 +54,7 @@ public class ProfileFragment extends Fragment implements Callback{
 		});
 		
 		
+		// Only for testing!!
 		ImageButton btn_picture = (ImageButton)view.findViewById(R.id.btn_profile_picture);
 		if(MainActivity.userId.equalsIgnoreCase("zheng")){
 			btn_picture.setBackgroundResource(R.drawable.zheng);
@@ -66,7 +67,6 @@ public class ProfileFragment extends Fragment implements Callback{
 		}else{
 			btn_picture.setBackgroundResource(R.drawable.guest);
 		}
-		
 		
 		return view;
 	}

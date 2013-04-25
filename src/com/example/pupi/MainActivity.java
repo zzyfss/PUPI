@@ -35,10 +35,9 @@ public class MainActivity extends FragmentActivity {
  
         mTabHost.addTab(mTabHost.newTabSpec("home").setIndicator("Home"),
                 HomeFragment.class, null);
-        Bundle b = new Bundle();
-        b.putBoolean("isPublic", false);
+      
         mTabHost.addTab(mTabHost.newTabSpec("track").setIndicator("Track"),
-               ListDisplayFragment.class, null); 
+               TrackFragment.class, null); 
         mTabHost.addTab(mTabHost.newTabSpec("profile").setIndicator("Profile"),
         		ProfileFragment.class, null);
 //        myTimer = new Timer();
