@@ -14,7 +14,7 @@
             android:layout_width="100dp"
             android:layout_height="48dp"
             android:onClick="help"
-            android:text="Go to help" />
+            android:text="Help" />
 
     </RelativeLayout>
 

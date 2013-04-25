@@ -14,41 +14,64 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="90dp"
         android:layout_marginLeft="10dp"
         android:orientation="vertical" >
         
-        <TextView
-            android:id="@+id/txt_listItem_post_title"
-            android:layout_marginTop="10dp"
-            android:layout_height="30dp"
-            android:layout_width="wrap_content"
-            android:text="Large Text"
-            android:textAppearance="?android:attr/textAppearanceLarge" />
-
-        <RelativeLayout
-            android:layout_marginTop="5dp"
-            android:layout_height="30dp"
+        
+        <LinearLayout
             android:layout_width="match_parent"
-             >
+            android:layout_height="40dp"
+            android:layout_marginLeft="10dp">
+           
+        	<TextView
+            	android:id="@+id/txt_listItem_post_title"
+            	android:layout_marginTop="10dp"
+            	android:layout_height="wrap_content"
+            	android:layout_width="wrap_content"
+            	android:text=""
+            	android:textAppearance="?android:attr/textAppearanceLarge" />
+		</LinearLayout>
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="25dp"
+            android:layout_marginLeft="10dp">
             <TextView
-                android:id="@+id/txt_listItem_post_room"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:text="Medium Text"
-                android:textAppearance="?android:attr/textAppearanceMedium" />
+            	android:id="@+id/txt_listItem_post_room0"
+            	android:layout_height="wrap_content"
+            	android:layout_width="wrap_content"
+            	android:text="Location:"
+            	android:textAppearance="?android:attr/textAppearanceSmall" />
+        	<TextView
+  				android:id="@+id/txt_listItem_post_room"
+            	android:layout_height="wrap_content"
+            	android:layout_width="wrap_content"
+            	android:text=""
+            	android:textAppearance="?android:attr/textAppearanceSmall" />
+		</LinearLayout>
+            
+            
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="25dp"
+            android:layout_marginLeft="10dp">
+            <TextView
+            	android:id="@+id/txt_listItem_post_reward0"
+            	
+            	android:layout_height="wrap_content"
+            	android:layout_width="wrap_content"
+            	android:text="Reward:"
+            	android:textAppearance="?android:attr/textAppearanceSmall" />
+        	<TextView
+  				android:id="@+id/txt_listItem_post_reward"
+              	
+            	android:layout_height="wrap_content"
+            	android:layout_width="wrap_content"
+            	android:text=""
+            	android:textAppearance="?android:attr/textAppearanceSmall" />
+		</LinearLayout>            
 
-            <TextView
-                android:id="@+id/txt_listItem_post_reward"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="10dp"
-                android:layout_alignParentRight="true"
-                android:text="Medium Text"
-                android:textAppearance="?android:attr/textAppearanceMedium" />
-        </RelativeLayout>
 
     </LinearLayout>
 
