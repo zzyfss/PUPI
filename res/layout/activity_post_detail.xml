@@ -19,7 +19,8 @@
             android:layout_height="48dp"
             android:layout_marginLeft="8dp"
             android:layout_marginTop="4dp"
-            android:text="Go to help!" />
+            android:text="Go to help!" 
+            android:onClick="help"/>
     </RelativeLayout>
 
     <LinearLayout
@@ -47,7 +48,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="30dp"
                 android:layout_marginTop="10dp"
-                android:text="User Name"
+                android:text="User Name:"
                 android:textAppearance="?android:attr/textAppearanceLarge" />
 
             <TextView
@@ -55,43 +56,111 @@
                 android:layout_width="wrap_content"
                 android:layout_height="30dp"
                 android:layout_marginTop="10dp"
-                android:text="Problem"
+                android:text="Title:"
                 android:textAppearance="?android:attr/textAppearanceMedium" />
         </LinearLayout>
     </LinearLayout>
 
-    <TextView
-        android:id="@+id/txt_post_detail_reward"
-        android:layout_width="300dp"
-        android:layout_height="30dp"
-        android:layout_below="@+id/LL_post_detail_1"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="14dp"
-        android:ems="10"
-        android:text="Reward:"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:textIsSelectable="true" />
+ <LinearLayout 
+     		android:id="@+id/LL_post_detail_help"
+     		android:layout_width="match_parent"
+            android:layout_height="40dp"
+      		android:layout_marginLeft="15dp"
+            android:layout_below="@+id/LL_post_detail_1"
+             android:layout_centerHorizontal="true"
+             >   
 
-    <TextView
-        android:id="@+id/txt_post_detail_loc"
-        android:layout_width="300dp"
-        android:layout_height="30dp"
-        android:layout_below="@+id/txt_post_detail_reward"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="14dp"
-        android:ems="10"
-        android:text="Location:"
-        android:textAppearance="?android:attr/textAppearanceMedium" >
-    </TextView>
+        <TextView
+            android:id="@+id/txt_post_detail_hel1"
+            android:layout_width="100dp"
+            android:layout_height="30dp"
+            android:layout_margin="15dp"
+            android:lines="1"
+            android:text="Helper:"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textIsSelectable="true" />
+        
+        <TextView
+            android:id="@+id/txt_post_detail_hel2"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_margin="15dp"
+            android:ems="10"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textIsSelectable="true" />
+
+</LinearLayout>    
+    
+    
+ 
+ 
+ <LinearLayout 
+     		android:id="@+id/LL_post_detail_reward"
+     		android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginLeft="15dp"
+            android:layout_below="@+id/LL_post_detail_help"
+             android:layout_centerHorizontal="true"
+             >   
+
+        <TextView
+            android:id="@+id/txt_post_detail_reward1"
+            android:layout_width="100dp"
+            android:layout_height="30dp"
+            android:layout_margin="15dp"
+            android:lines="1"
+            android:text="Reward:"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textIsSelectable="true" />
+        
+<TextView
+            android:id="@+id/txt_post_detail_reward2"
+    		android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_margin="15dp"
+            android:lines="1"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textIsSelectable="true" />
+
+
+</LinearLayout>   
+ 
+  <LinearLayout 
+     		android:id="@+id/LL_post_detail_location"
+     		android:layout_width="match_parent"
+            android:layout_height="40dp"
+			android:layout_marginLeft="15dp"
+            android:layout_below="@+id/LL_post_detail_reward"
+             android:layout_centerHorizontal="true"
+             >   
+
+        <TextView
+            android:id="@+id/txt_post_detail_location1"
+            android:layout_width="100dp"
+            android:layout_height="30dp"
+            android:layout_margin="15dp"
+            android:lines="1"
+            android:text="Location:"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textIsSelectable="true" />
+        
+		<TextView
+            android:id="@+id/txt_post_detail_location2"
+    		android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_margin="15dp"
+            android:lines="1"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textIsSelectable="true" />
+</LinearLayout> 
 
     <TextView
         android:id="@+id/txt_post_detail_title_des"
-        android:layout_width="300dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/txt_post_detail_loc"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="14dp"
-        android:ems="10"
+        android:layout_below="@+id/LL_post_detail_location"
+        android:layout_marginLeft="22dp"
+        android:layout_marginTop="15dp"
         android:text="Description:"
         android:textAppearance="?android:attr/textAppearanceMedium" >
     </TextView>
@@ -101,9 +170,9 @@
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/txt_post_detail_title_des"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="5dp"
-        android:ems="10"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="15dp"
+        android:line="5"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:textIsSelectable="true" />
 
