@@ -57,7 +57,6 @@ public class MainActivity extends FragmentActivity {
     public void createPost(View view){
 		Intent i = new Intent(this,NewPostActivity.class);
 		startActivity(i);
-		
 	}
     
     public void viewPost(View view){

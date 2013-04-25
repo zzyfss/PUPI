@@ -6,19 +6,13 @@
 
     <RelativeLayout
         android:id="@+id/RL_new_post_top_bar"
-        android:layout_width="fill_parent"
-        android:layout_height="56dp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentTop="true" >
+        style="@style/TitleBarStyle" >
 
         <Button
             android:id="@+id/btn_add_post"
-            android:layout_marginLeft="8dp"
             style="@style/ButtonStyle"
             android:layout_width="100dp"
             android:layout_height="48dp"
-            android:layout_marginTop="4dp"
             android:onClick="submitPost"
             android:text="Post" />
     </RelativeLayout>
@@ -46,7 +40,7 @@
         android:layout_marginTop="14dp"
         android:ems="10"
         android:hint="Reward:" />
-    
+
     <EditText
         android:id="@+id/editText_post_loc"
         android:layout_width="300dp"
@@ -56,8 +50,6 @@
         android:layout_marginTop="14dp"
         android:ems="10"
         android:hint="Building Room:" />
-    
-    
 
     <EditText
         android:id="@+id/editText_post_content"

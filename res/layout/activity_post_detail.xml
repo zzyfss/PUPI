@@ -6,21 +6,16 @@
 
     <RelativeLayout
         android:id="@+id/RL_post_detail_top_bar"
-        android:layout_width="fill_parent"
-        android:layout_height="56dp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentTop="true" >
+    	style="@style/TitleBarStyle" >
 
         <Button
             android:id="@+id/btn_go_to_help"
             style="@style/ButtonStyle"
             android:layout_width="100dp"
             android:layout_height="48dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginTop="4dp"
-            android:text="Go to help!" 
-            android:onClick="help"/>
+            android:onClick="help"
+            android:text="Go to help" />
+
     </RelativeLayout>
 
     <LinearLayout
@@ -172,7 +167,7 @@
         android:layout_below="@+id/txt_post_detail_title_des"
         android:layout_marginLeft="15dp"
         android:layout_marginTop="15dp"
-        android:line="5"
+        android:lines="5"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:textIsSelectable="true" />
 

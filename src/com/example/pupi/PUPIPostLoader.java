@@ -9,11 +9,15 @@ import android.util.Log;
 
 public class PUPIPostLoader extends AsyncTaskLoader<List<PUPIPost>> {
 
-	List<PUPIPost> mPosts;
+	private List<PUPIPost> mPosts;
+	private boolean isPublic;
 
-	public PUPIPostLoader(Context context) {
+	public PUPIPostLoader(Context context, boolean isPublic) {
 		super(context);
-
+		
+		// isPublic determines which PHP  is used.
+		this.isPublic = isPublic;
+		
 		// Retrieve the package manager for later use; note we don't
 		// use 'context' directly but instead the save global application
 		// context returned by getContext().
@@ -28,7 +32,14 @@ public class PUPIPostLoader extends AsyncTaskLoader<List<PUPIPost>> {
 	@Override public List<PUPIPost> loadInBackground() {
 		// Retrieve all known applications.
 		List<PUPIPost> posts = new ArrayList<PUPIPost>();
-		String result = PHPLoader.getStringFromPhp(PHPLoader.GETPOST_PHP,new ArrayList());
+		String result;
+		if(isPublic){
+			result = PHPLoader.getStringFromPhp(PHPLoader.GETPOST_PHP,new ArrayList());
+		}
+		else{
+			result = PHPLoader.getStringFromPhp(PHPLoader.GETUSERPOST_PHP,new ArrayList());
+		}
+		
 		if(result.contains("failphpusucks")){
 			return posts;
 		}

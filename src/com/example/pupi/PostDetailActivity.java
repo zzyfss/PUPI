@@ -27,9 +27,9 @@ public class PostDetailActivity extends Activity {
 		setContentView(R.layout.activity_post_detail);
 		poster = (TextView)findViewById(R.id.txt_post_detail_name);
 		TextView title = (TextView)findViewById(R.id.txt_listItem_post_title);
-		TextView helper = (TextView)findViewById(R.id.txt_post_detail_hel);
-		TextView reward = (TextView)findViewById(R.id.txt_post_detail_reward);
-		TextView loc = (TextView)findViewById(R.id.txt_post_detail_loc);
+		TextView helper = (TextView)findViewById(R.id.txt_post_detail_hel2);
+		TextView reward = (TextView)findViewById(R.id.txt_post_detail_reward2);
+		TextView loc = (TextView)findViewById(R.id.txt_post_detail_location2);
 		TextView des = (TextView)findViewById(R.id.txt_post_detail_des);
 		
 		intent = getIntent();
@@ -49,6 +49,7 @@ public class PostDetailActivity extends Activity {
 		}
 		new AsyncHelpAgent().execute(this);
 	}
+	
 	private class AsyncHelpAgent extends AsyncTask{
 
 		@Override
@@ -66,7 +67,7 @@ public class PostDetailActivity extends Activity {
 		protected void onPostExecute(Object result) {
 		//	dilg_progress.dismiss();
 			if(((String)result).contains("success")){
-				Toast.makeText(getApplicationContext(), "Success! Thank you", Toast.LENGTH_SHORT).show();
+				Toast.makeText(getApplicationContext(), "Success! Thank you!", Toast.LENGTH_SHORT).show();
 				finish();
 			}
 		}
