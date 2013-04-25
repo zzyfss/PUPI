@@ -1,18 +1,14 @@
 package com.example.pupi;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Timer;
-import java.util.TimerTask;
-
 import android.content.Intent;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTabHost;
 import android.util.Log;
 import android.view.View;
 import android.view.Window;
+import android.widget.ImageButton;
 
 /**
  * This demonstrates the use of action bar tabs and how they interact
@@ -25,7 +21,8 @@ public class MainActivity extends FragmentActivity {
     private Timer myTimer;
 
     
-    protected void onCreate(Bundle savedInstanceState) {
+    @Override
+	protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_main);
@@ -45,6 +42,9 @@ public class MainActivity extends FragmentActivity {
         mTabHost.addTab(mTabHost.newTabSpec("profile").setIndicator("Profile"),
         		ProfileFragment.class, null);
 
+        ImageButton btn_picture = (ImageButton)findViewById(R.id.btn_profile_picture);
+        btn_picture.setBackgroundResource(R.drawable.btn_test);
+        
 //        myTimer = new Timer();
 //        myTimer.schedule(new TimerTask(){
 //        	public void run() {
