@@ -30,7 +30,7 @@
         android:layout_below="@+id/RL_account_top_bar"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="14dp"
-        android:src="@android:drawable/btn_star" />
+        android:background = "@null"  />
 
     <TextView
         android:id="@+id/txt_title_name"
