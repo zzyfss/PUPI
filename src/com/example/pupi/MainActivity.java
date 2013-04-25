@@ -42,9 +42,7 @@ public class MainActivity extends FragmentActivity {
         mTabHost.addTab(mTabHost.newTabSpec("profile").setIndicator("Profile"),
         		ProfileFragment.class, null);
 
-        ImageButton btn_picture = (ImageButton)findViewById(R.id.btn_profile_picture);
-        btn_picture.setBackgroundResource(R.drawable.btn_test);
-        
+                
 //        myTimer = new Timer();
 //        myTimer.schedule(new TimerTask(){
 //        	public void run() {

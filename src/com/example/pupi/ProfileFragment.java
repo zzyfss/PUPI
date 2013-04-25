@@ -20,6 +20,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 public class ProfileFragment extends Fragment implements Callback{
@@ -51,6 +52,21 @@ public class ProfileFragment extends Fragment implements Callback{
 			}
 			
 		});
+		
+		
+		ImageButton btn_picture = (ImageButton)view.findViewById(R.id.btn_profile_picture);
+		if(MainActivity.userId.equalsIgnoreCase("zheng")){
+			btn_picture.setBackgroundResource(R.drawable.zheng);
+		}else if(MainActivity.userId.equalsIgnoreCase("sun")){
+			btn_picture.setBackgroundResource(R.drawable.sun);
+		}else if(MainActivity.userId.equalsIgnoreCase("mao")){
+			btn_picture.setBackgroundResource(R.drawable.mao);
+		}else if(MainActivity.userId.equalsIgnoreCase("king")){
+			btn_picture.setBackgroundResource(R.drawable.king);
+		}else{
+			btn_picture.setBackgroundResource(R.drawable.guest);
+		}
+		
 		
 		return view;
 	}
