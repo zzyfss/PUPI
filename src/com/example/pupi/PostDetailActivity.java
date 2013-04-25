@@ -9,6 +9,7 @@ import org.apache.http.message.BasicNameValuePair;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.util.Log;
 import android.view.Menu;
@@ -21,6 +22,7 @@ public class PostDetailActivity extends Activity {
 	
 	Intent intent;
 	TextView poster;
+	private ProgressDialog mDilg;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -47,6 +49,7 @@ public class PostDetailActivity extends Activity {
 			Toast.makeText(getApplicationContext(), "This is your own post!", Toast.LENGTH_SHORT).show();
 			return;
 		}
+		mDilg= ProgressDialog.show(this,"","Processing...",false,true);
 		new AsyncHelpAgent().execute(this);
 	}
 	
@@ -66,6 +69,7 @@ public class PostDetailActivity extends Activity {
 		@Override
 		protected void onPostExecute(Object result) {
 		//	dilg_progress.dismiss();
+			mDilg.dismiss();
 			if(((String)result).contains("success")){
 				Toast.makeText(getApplicationContext(), "Success! Thank you!", Toast.LENGTH_SHORT).show();
 				finish();

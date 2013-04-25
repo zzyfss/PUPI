@@ -12,6 +12,7 @@ import android.location.LocationManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.view.Menu;
@@ -41,6 +42,8 @@ public class NewPostActivity extends Activity {
 	private double gps_latitude = -888;
 	private double post_longitude = -888;//final value sent to server
 	private double post_latitude = -888;//final value sent to server
+	
+	private ProgressDialog mDilg;
 
 	
 	
@@ -148,6 +151,7 @@ public class NewPostActivity extends Activity {
 			p.setLocy(post_longitude);//longitude
 						
 			new_post = p.getPostPackage();
+			mDilg= ProgressDialog.show(this,"","Posting...",false,true);
 			new AsyncPostAgent().execute(this);
 			
 		}
@@ -171,6 +175,7 @@ public class NewPostActivity extends Activity {
 
 		@Override
 		protected void onPostExecute(Object result) {
+			mDilg.dismiss();
 			if(((String)result).startsWith("success")){
 				Toast.makeText(getApplicationContext(), "Post Success!", Toast.LENGTH_SHORT).show();
 				finish();

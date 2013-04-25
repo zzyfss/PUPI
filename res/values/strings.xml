@@ -11,5 +11,26 @@
     <string name="title_activity_new_post">NewPostActivity</string>
     <string name="title_activity_edit_profile">EditProfileActivity</string>
     <string name="title_activity_post_detail">PostDetailActivity</string>
+    <string name="menu_feedback">Feedback</string>
+    <string name="feedbacktitle">Feedback to developers :</string>
+    <string name="feedbackname">Name:</string>
+    <string name="feedbackemail">E-Mail:</string>
+    <string name="feedbacksubjectdefault">Feedback Subject</string>
+    <string name="feedbacksubject">Feedback Subject:</string>
+    <string name="feedbacktype">Feedback type:</string>
+    <string name="feedbacktype1">Praise</string>
+    <string name="feedbacktype2">Gripe</string>
+    <string name="feedbacktype3">Suggestion</string>
+    <string name="feedbacktype4">Bug</string>
+    <string name="feedbackbody">Type your feedback here:</string>
+    <string name="feedbackresponse">Would you like an email response?</string>
+    <string name="feedbackbutton">Send Feedback</string>
+    <string name="feedbacksent">Feedback has been sent. Thank you!</string>
+    <string name="feedbackerror1">Please enter your name</string>
+    <string name="feedbackerror2">Please enter your email</string>
+    <string name="feedbackerror3">Subject is needed</string>
+    <string name="feedbackerror4">Please type your feeback</string>
+    <string name="feedbackerror5">Invalid email address</string>
+    <string name="title_activity_feedback">Feedback</string>
 
 </resources>
