@@ -41,8 +41,6 @@ public class MainActivity extends FragmentActivity {
                ListDisplayFragment.class, null); 
         mTabHost.addTab(mTabHost.newTabSpec("profile").setIndicator("Profile"),
         		ProfileFragment.class, null);
-
-                
 //        myTimer = new Timer();
 //        myTimer.schedule(new TimerTask(){
 //        	public void run() {

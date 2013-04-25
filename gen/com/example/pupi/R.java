@@ -151,16 +151,22 @@ containing a value of this type.
     public static final class drawable {
         public static final int background_blue=0x7f020000;
         public static final int background_dark_blue=0x7f020001;
-        public static final int header=0x7f020002;
-        public static final int ic_launcher=0x7f020003;
-        public static final int icon=0x7f020004;
-        public static final int kotomi=0x7f020005;
-        public static final int kotomi2=0x7f020006;
-        public static final int style_btn_blue=0x7f020007;
-        public static final int tab_bar_focus=0x7f020008;
-        public static final int tab_bar_normal=0x7f020009;
-        public static final int tab_bar_pressed=0x7f02000a;
-        public static final int tab_indicator=0x7f02000b;
+        public static final int btn_test=0x7f020002;
+        public static final int guest=0x7f020003;
+        public static final int header=0x7f020004;
+        public static final int ic_launcher=0x7f020005;
+        public static final int icon=0x7f020006;
+        public static final int king=0x7f020007;
+        public static final int kotomi=0x7f020008;
+        public static final int kotomi2=0x7f020009;
+        public static final int mao=0x7f02000a;
+        public static final int style_btn_blue=0x7f02000b;
+        public static final int sun=0x7f02000c;
+        public static final int tab_bar_focus=0x7f02000d;
+        public static final int tab_bar_normal=0x7f02000e;
+        public static final int tab_bar_pressed=0x7f02000f;
+        public static final int tab_indicator=0x7f020010;
+        public static final int zheng=0x7f020011;
     }
     public static final class id {
         public static final int LL_post_detail_1=0x7f06001a;
@@ -171,7 +177,8 @@ containing a value of this type.
         public static final int RL_home_top_bar=0x7f06002a;
         public static final int RL_new_post_top_bar=0x7f060012;
         public static final int RL_post_detail_top_bar=0x7f060018;
-        public static final int action_settings=0x7f06003a;
+        public static final int RL_track_top_bar=0x7f060037;
+        public static final int action_settings=0x7f06003e;
         public static final int btn_add_post=0x7f060013;
         public static final int btn_edit=0x7f06002f;
         public static final int btn_go_to_help=0x7f060019;
@@ -181,6 +188,7 @@ containing a value of this type.
         public static final int btn_signUp=0x7f060010;
         public static final int btn_switch_mode=0x7f06002c;
         public static final int btn_update=0x7f060006;
+        public static final int container_track=0x7f060038;
         public static final int editText_account_email=0x7f060008;
         public static final int editText_account_intro=0x7f060009;
         public static final int editText_account_name=0x7f060007;
@@ -189,7 +197,7 @@ containing a value of this type.
         public static final int editText_post_reward=0x7f060015;
         public static final int editText_post_title=0x7f060014;
         public static final int editText_pwd=0x7f06000c;
-        public static final int editText_pwd_again=0x7f060039;
+        public static final int editText_pwd_again=0x7f06003d;
         public static final int editText_userName=0x7f06000b;
         public static final int fragment_container=0x7f06002d;
         public static final int hidenContainer=0x7f06000d;
@@ -207,8 +215,10 @@ containing a value of this type.
         public static final int txt_account_email=0x7f060034;
         public static final int txt_account_intro=0x7f060036;
         public static final int txt_account_name=0x7f060032;
-        public static final int txt_listItem_post_reward=0x7f060038;
-        public static final int txt_listItem_post_room=0x7f060037;
+        public static final int txt_listItem_post_reward=0x7f06003c;
+        public static final int txt_listItem_post_reward0=0x7f06003b;
+        public static final int txt_listItem_post_room=0x7f06003a;
+        public static final int txt_listItem_post_room0=0x7f060039;
         public static final int txt_listItem_post_title=0x7f06001d;
         public static final int txt_post_detail_des=0x7f060028;
         public static final int txt_post_detail_hel1=0x7f06001f;
@@ -238,8 +248,9 @@ containing a value of this type.
         public static final int fragment_list_mode=0x7f030007;
         public static final int fragment_main_dummy=0x7f030008;
         public static final int fragment_profile=0x7f030009;
-        public static final int list_item_post=0x7f03000a;
-        public static final int view_sign_up=0x7f03000b;
+        public static final int fragment_track=0x7f03000a;
+        public static final int list_item_post=0x7f03000b;
+        public static final int view_sign_up=0x7f03000c;
     }
     public static final class menu {
         public static final int edit_profile=0x7f0b0000;
@@ -313,8 +324,29 @@ containing a value of this type.
         find the service-side assets. [CHAR LIMIT=25] 
          */
         public static final int common_signin_button_text_long=0x7f07000d;
+        public static final int feedbackbody=0x7f070026;
+        public static final int feedbackbutton=0x7f070028;
+        public static final int feedbackemail=0x7f07001e;
+        public static final int feedbackerror1=0x7f07002a;
+        public static final int feedbackerror2=0x7f07002b;
+        public static final int feedbackerror3=0x7f07002c;
+        public static final int feedbackerror4=0x7f07002d;
+        public static final int feedbackerror5=0x7f07002e;
+        public static final int feedbackname=0x7f07001d;
+        public static final int feedbackresponse=0x7f070027;
+        public static final int feedbacksent=0x7f070029;
+        public static final int feedbacksubject=0x7f070020;
+        public static final int feedbacksubjectdefault=0x7f07001f;
+        public static final int feedbacktitle=0x7f07001c;
+        public static final int feedbacktype=0x7f070021;
+        public static final int feedbacktype1=0x7f070022;
+        public static final int feedbacktype2=0x7f070023;
+        public static final int feedbacktype3=0x7f070024;
+        public static final int feedbacktype4=0x7f070025;
         public static final int hello_world=0x7f070013;
+        public static final int menu_feedback=0x7f07001b;
         public static final int title_activity_edit_profile=0x7f070019;
+        public static final int title_activity_feedback=0x7f07002f;
         public static final int title_activity_main=0x7f070014;
         public static final int title_activity_new_post=0x7f070018;
         public static final int title_activity_post_detail=0x7f07001a;
