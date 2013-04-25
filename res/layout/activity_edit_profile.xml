@@ -6,19 +6,13 @@
 
     <RelativeLayout
         android:id="@+id/RL_account_top_bar"
-        android:layout_width="fill_parent"
-        android:layout_height="56dp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentTop="true" >
+       	style="@style/TitleBarStyle" >
 
         <Button
             android:id="@+id/btn_update"
-            android:layout_marginLeft="8dp"
             style="@style/ButtonStyle"
             android:layout_width="100dp"
             android:layout_height="48dp"
-            android:layout_marginTop="4dp"
             android:onClick="updateProfile"
             android:text="Update" />
 

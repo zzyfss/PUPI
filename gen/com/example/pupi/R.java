@@ -164,19 +164,22 @@ containing a value of this type.
     }
     public static final class id {
         public static final int LL_post_detail_1=0x7f06001a;
+        public static final int LL_post_detail_help=0x7f06001e;
+        public static final int LL_post_detail_location=0x7f060024;
+        public static final int LL_post_detail_reward=0x7f060021;
         public static final int RL_account_top_bar=0x7f060005;
-        public static final int RL_home_top_bar=0x7f060024;
+        public static final int RL_home_top_bar=0x7f06002a;
         public static final int RL_new_post_top_bar=0x7f060012;
         public static final int RL_post_detail_top_bar=0x7f060018;
-        public static final int action_settings=0x7f060034;
+        public static final int action_settings=0x7f06003a;
         public static final int btn_add_post=0x7f060013;
-        public static final int btn_edit=0x7f060029;
+        public static final int btn_edit=0x7f06002f;
         public static final int btn_go_to_help=0x7f060019;
-        public static final int btn_new_post=0x7f060025;
-        public static final int btn_profile_picture=0x7f06002a;
+        public static final int btn_new_post=0x7f06002b;
+        public static final int btn_profile_picture=0x7f060030;
         public static final int btn_signIn=0x7f06000f;
         public static final int btn_signUp=0x7f060010;
-        public static final int btn_switch_mode=0x7f060026;
+        public static final int btn_switch_mode=0x7f06002c;
         public static final int btn_update=0x7f060006;
         public static final int editText_account_email=0x7f060008;
         public static final int editText_account_intro=0x7f060009;
@@ -186,9 +189,9 @@ containing a value of this type.
         public static final int editText_post_reward=0x7f060015;
         public static final int editText_post_title=0x7f060014;
         public static final int editText_pwd=0x7f06000c;
-        public static final int editText_pwd_again=0x7f060033;
+        public static final int editText_pwd_again=0x7f060039;
         public static final int editText_userName=0x7f06000b;
-        public static final int fragment_container=0x7f060027;
+        public static final int fragment_container=0x7f06002d;
         public static final int hidenContainer=0x7f06000d;
         public static final int hybrid=0x7f060004;
         public static final int img_listItem_post_picture=0x7f06001b;
@@ -198,24 +201,27 @@ containing a value of this type.
         public static final int normal=0x7f060001;
         public static final int realtabcontent=0x7f060011;
         public static final int satellite=0x7f060002;
-        public static final int section_label=0x7f060028;
+        public static final int section_label=0x7f06002e;
         public static final int terrain=0x7f060003;
-        public static final int textView1=0x7f060023;
-        public static final int txt_account_email=0x7f06002e;
-        public static final int txt_account_intro=0x7f060030;
-        public static final int txt_account_name=0x7f06002c;
-        public static final int txt_listItem_post_reward=0x7f060032;
-        public static final int txt_listItem_post_room=0x7f060031;
+        public static final int textView1=0x7f060029;
+        public static final int txt_account_email=0x7f060034;
+        public static final int txt_account_intro=0x7f060036;
+        public static final int txt_account_name=0x7f060032;
+        public static final int txt_listItem_post_reward=0x7f060038;
+        public static final int txt_listItem_post_room=0x7f060037;
         public static final int txt_listItem_post_title=0x7f06001d;
-        public static final int txt_post_detail_des=0x7f060022;
-        public static final int txt_post_detail_hel=0x7f06001e;
-        public static final int txt_post_detail_loc=0x7f060020;
+        public static final int txt_post_detail_des=0x7f060028;
+        public static final int txt_post_detail_hel1=0x7f06001f;
+        public static final int txt_post_detail_hel2=0x7f060020;
+        public static final int txt_post_detail_location1=0x7f060025;
+        public static final int txt_post_detail_location2=0x7f060026;
         public static final int txt_post_detail_name=0x7f06001c;
-        public static final int txt_post_detail_reward=0x7f06001f;
-        public static final int txt_post_detail_title_des=0x7f060021;
-        public static final int txt_title_email=0x7f06002d;
-        public static final int txt_title_intro=0x7f06002f;
-        public static final int txt_title_name=0x7f06002b;
+        public static final int txt_post_detail_reward1=0x7f060022;
+        public static final int txt_post_detail_reward2=0x7f060023;
+        public static final int txt_post_detail_title_des=0x7f060027;
+        public static final int txt_title_email=0x7f060033;
+        public static final int txt_title_intro=0x7f060035;
+        public static final int txt_title_name=0x7f060031;
     }
     public static final class integer {
         public static final int card_flip_time_full=0x7f090000;
@@ -343,8 +349,9 @@ containing a value of this type.
  All customizations that are NOT specific to a particular API-level can go here. 
          */
         public static final int AppTheme=0x7f0a0001;
-        public static final int ButtonStyle=0x7f0a0003;
+        public static final int ButtonStyle=0x7f0a0004;
         public static final int TextStyle=0x7f0a0002;
+        public static final int TitleBarStyle=0x7f0a0003;
     }
     public static final class styleable {
         /** Attributes that can be used with a MapAttrs.

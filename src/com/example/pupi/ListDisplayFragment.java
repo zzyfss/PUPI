@@ -45,8 +45,8 @@ implements LoaderManager.LoaderCallbacks<List<PUPIPost>>{
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        
         isPublic = getArguments() != null ? getArguments().getBoolean("PUBLIC") : false;
-       
         if(isPublic){
         	Log.d("DEBUG","isPublic");   	
         }
@@ -94,7 +94,7 @@ implements LoaderManager.LoaderCallbacks<List<PUPIPost>>{
 	public Loader<List<PUPIPost>> onCreateLoader(int id, Bundle args) {
 		// This is called when a new Loader needs to be created.  This
 		// sample only has one Loader with no arguments, so it is simple.
-		return new PUPIPostLoader(getActivity());
+		return new PUPIPostLoader(getActivity(),isPublic);
 	}
 
 	@Override

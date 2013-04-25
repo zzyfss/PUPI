@@ -6,6 +6,7 @@
 
     <RelativeLayout
         android:id="@+id/RL_account_top_bar"
+        android:background="@android:color/holo_blue_light"
         android:layout_width="fill_parent"
         android:layout_height="56dp"
         android:layout_alignParentLeft="true"

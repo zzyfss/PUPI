@@ -29,6 +29,7 @@ public class PHPLoader {
 	final static String REGISTER_PHP = "http://web.ics.purdue.edu/~maog/register.php";
 	final static String GETPOST_PHP = "http://web.ics.purdue.edu/~maog/getpost.php";
 	final static String GETINFO_PHP = "http://web.ics.purdue.edu/~maog/getinfo.php";
+	final static String GETUSERPOST_PHP = "http://web.ics.purdue.edu/~maog/getuserpost.php";
 
 	static String getStringFromPhp(String in,List list){
 		
