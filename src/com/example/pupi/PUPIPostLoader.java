@@ -3,6 +3,9 @@ package com.example.pupi;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.http.NameValuePair;
+import org.apache.http.message.BasicNameValuePair;
+
 import android.content.Context;
 import android.support.v4.content.AsyncTaskLoader;
 import android.util.Log;
@@ -32,15 +35,19 @@ public class PUPIPostLoader extends AsyncTaskLoader<List<PUPIPost>> {
 	@Override public List<PUPIPost> loadInBackground() {
 		// Retrieve all known applications.
 		List<PUPIPost> posts = new ArrayList<PUPIPost>();
+		
 		String result;
 		if(isPublic){
 			result = PHPLoader.getStringFromPhp(PHPLoader.GETPOST_PHP,new ArrayList());
 		}
 		else{
-			result = PHPLoader.getStringFromPhp(PHPLoader.GETUSERPOST_PHP,new ArrayList());
+			List<NameValuePair> nameValPair = new ArrayList<NameValuePair>();
+			nameValPair.add(new BasicNameValuePair("username", MainActivity.userId));
+			result = PHPLoader.getStringFromPhp(PHPLoader.GETUSERPOST_PHP,nameValPair);
+			Log.d("getuserpost","result");
 		}
 		
-		if(result.contains("failphpusucks")){
+		if(result.contains("phpusucks")){
 			return posts;
 		}
 		result = result.substring(8);
@@ -49,7 +56,7 @@ public class PUPIPostLoader extends AsyncTaskLoader<List<PUPIPost>> {
 		for(int i=0; i<temp.length; i++){
 			//Log.d("Index", Integer.toString(i));
 			PUPIPost p = new PUPIPost(temp[i]);
-			Log.d("Posts",temp[i]);
+		//	Log.d("Posts",temp[i]);
 			posts.add(p);
 		}	
 
