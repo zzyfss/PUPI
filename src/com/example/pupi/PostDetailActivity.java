@@ -70,6 +70,10 @@ public class PostDetailActivity extends Activity {
 				Toast.makeText(getApplicationContext(), "Success! Thank you!", Toast.LENGTH_SHORT).show();
 				finish();
 			}
+			if(((String)result).contains("fail")){
+				Toast.makeText(getApplicationContext(), "The is helped", Toast.LENGTH_SHORT).show();
+				finish();
+			}
 		}
 	}
 
