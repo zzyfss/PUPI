@@ -28,7 +28,7 @@ public class HomeFragment extends Fragment
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 
-		mMapDisplay = new SupportMapFragment();
+		mMapDisplay = new MapDisplayFragment();
 		mListDisplay = ListDisplayFragment.newInstance(true);
 		mView = inflater.inflate(R.layout.fragment_home,
 				container, false);
