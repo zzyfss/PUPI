@@ -1,65 +1,69 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".NewPostActivity" >
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content" >
 
     <RelativeLayout
-        android:id="@+id/RL_new_post_top_bar"
-        style="@style/TitleBarStyle" >
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".NewPostActivity" >
 
-        <Button
-            android:id="@+id/btn_add_post"
-            style="@style/ButtonStyle"
-            android:layout_width="100dp"
+        <RelativeLayout
+            android:id="@+id/RL_new_post_top_bar"
+            style="@style/TitleBarStyle" >
+
+            <Button
+                android:id="@+id/btn_add_post"
+                style="@style/ButtonStyle"
+                android:layout_width="100dp"
+                android:layout_height="48dp"
+                android:onClick="submitPost"
+                android:text="Post" />
+        </RelativeLayout>
+
+        <EditText
+            android:id="@+id/editText_post_title"
+            android:layout_width="300dp"
             android:layout_height="48dp"
-            android:onClick="submitPost"
-            android:text="Post" />
+            android:layout_below="@+id/RL_new_post_top_bar"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="false"
+            android:layout_marginTop="28dp"
+            android:ems="10"
+            android:hint="Problem title:" >
+
+            <requestFocus />
+        </EditText>
+
+        <EditText
+            android:id="@+id/editText_post_reward"
+            android:layout_width="300dp"
+            android:layout_height="48dp"
+            android:layout_below="@+id/editText_post_title"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="14dp"
+            android:ems="10"
+            android:hint="Reward:" />
+
+        <EditText
+            android:id="@+id/editText_post_loc"
+            android:layout_width="300dp"
+            android:layout_height="48dp"
+            android:layout_below="@+id/editText_post_reward"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="14dp"
+            android:ems="10"
+            android:hint="Building Room:" />
+
+        <EditText
+            android:id="@+id/editText_post_content"
+            android:layout_width="300dp"
+            android:layout_height="150dp"
+            android:layout_below="@+id/editText_post_loc"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="14dp"
+            android:ems="10"
+            android:hint="Brief description:"
+            android:inputType="textMultiLine" />
     </RelativeLayout>
-
-    <EditText
-        android:id="@+id/editText_post_title"
-        android:layout_width="300dp"
-        android:layout_height="48dp"
-        android:layout_below="@+id/RL_new_post_top_bar"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="false"
-        android:layout_marginTop="28dp"
-        android:ems="10"
-        android:hint="Problem title:" >
-
-        <requestFocus />
-    </EditText>
-
-    <EditText
-        android:id="@+id/editText_post_reward"
-        android:layout_width="300dp"
-        android:layout_height="48dp"
-        android:layout_below="@+id/editText_post_title"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="14dp"
-        android:ems="10"
-        android:hint="Reward:" />
-
-    <EditText
-        android:id="@+id/editText_post_loc"
-        android:layout_width="300dp"
-        android:layout_height="48dp"
-        android:layout_below="@+id/editText_post_reward"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="14dp"
-        android:ems="10"
-        android:hint="Building Room:" />
-
-    <EditText
-        android:id="@+id/editText_post_content"
-        android:layout_width="300dp"
-        android:layout_height="150dp"
-        android:layout_below="@+id/editText_post_loc"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="14dp"
-        android:ems="10"
-        android:hint="Brief description:"
-        android:inputType="textMultiLine" />
-
-</RelativeLayout>
+</ScrollView>

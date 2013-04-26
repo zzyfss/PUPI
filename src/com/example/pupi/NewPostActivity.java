@@ -188,7 +188,7 @@ public class NewPostActivity extends Activity {
 				finish();
 			}else if(((String)result).startsWith("fail")){
 				fail_post_sound.start();
-				Toast.makeText(getApplicationContext(), "Server Busy, please try again later.", Toast.LENGTH_SHORT).show();
+				Toast.makeText(getApplicationContext(), "Server Busy. Please try again later.", Toast.LENGTH_SHORT).show();
 			}
 		}
 	}
@@ -196,7 +196,7 @@ public class NewPostActivity extends Activity {
 	
 	
 	/* Class My Location Listener */
-	public class MyLocationListener_network implements LocationListener
+	private class MyLocationListener_network implements LocationListener
 	{
 		@Override
 		public void onLocationChanged(Location loc)

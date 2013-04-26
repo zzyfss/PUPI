@@ -151,22 +151,27 @@ containing a value of this type.
     public static final class drawable {
         public static final int background_blue=0x7f020000;
         public static final int background_dark_blue=0x7f020001;
-        public static final int btn_test=0x7f020002;
-        public static final int guest=0x7f020003;
-        public static final int header=0x7f020004;
-        public static final int ic_launcher=0x7f020005;
-        public static final int icon=0x7f020006;
-        public static final int king=0x7f020007;
-        public static final int kotomi=0x7f020008;
-        public static final int kotomi2=0x7f020009;
-        public static final int mao=0x7f02000a;
-        public static final int style_btn_blue=0x7f02000b;
-        public static final int sun=0x7f02000c;
-        public static final int tab_bar_focus=0x7f02000d;
-        public static final int tab_bar_normal=0x7f02000e;
-        public static final int tab_bar_pressed=0x7f02000f;
-        public static final int tab_indicator=0x7f020010;
-        public static final int zheng=0x7f020011;
+        public static final int btn=0x7f020002;
+        public static final int btn_pressed=0x7f020003;
+        public static final int btn_test=0x7f020004;
+        public static final int guest=0x7f020005;
+        public static final int header=0x7f020006;
+        public static final int ic_launcher=0x7f020007;
+        public static final int icon=0x7f020008;
+        public static final int king=0x7f020009;
+        public static final int kotomi=0x7f02000a;
+        public static final int kotomi2=0x7f02000b;
+        public static final int mao=0x7f02000c;
+        public static final int refresh=0x7f02000d;
+        public static final int refresh_pressed=0x7f02000e;
+        public static final int style_btn_blue=0x7f02000f;
+        public static final int style_refresh=0x7f020010;
+        public static final int sun=0x7f020011;
+        public static final int tab_bar_focus=0x7f020012;
+        public static final int tab_bar_normal=0x7f020013;
+        public static final int tab_bar_pressed=0x7f020014;
+        public static final int tab_indicator=0x7f020015;
+        public static final int zheng=0x7f020016;
     }
     public static final class id {
         public static final int LL_post_detail_1=0x7f07001a;
@@ -391,6 +396,7 @@ containing a value of this type.
          */
         public static final int AppTheme=0x7f0b0001;
         public static final int ButtonStyle=0x7f0b0004;
+        public static final int RefreshStyle=0x7f0b0005;
         public static final int TextStyle=0x7f0b0002;
         public static final int TitleBarStyle=0x7f0b0003;
     }

@@ -2,10 +2,11 @@ package com.example.pupi;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
-
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.os.AsyncTask;
@@ -45,6 +46,13 @@ public class EditProfileActivity extends Activity {
 
 	public void updateProfile(View v){
 		mDilg= ProgressDialog.show(this,"","Updating...",false,true);
+		Pattern regex=Pattern.compile("^([a-z0-9A-Z]+[-|\\.]?)+[a-z0-9A-Z]*@([a-z0-9A-Z]+(-[a-z0-9A-Z]+)?\\.)+[a-zA-Z]{2,}$");
+		Matcher inputEmail=regex.matcher(email.getText().toString());
+		if(!inputEmail.matches()){
+			Toast.makeText(this,"Invalid email address.", Toast.LENGTH_SHORT).show();
+			mDilg.dismiss();
+			return;
+		}
 		new AsyncUpdateinfoAgent().execute(this);
 	}
 

@@ -3,7 +3,11 @@ package com.example.pupi;
 import java.util.HashMap;
 import java.util.List;
 
+import android.content.Context;
 import android.content.Intent;
+import android.location.Location;
+import android.location.LocationListener;
+import android.location.LocationManager;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Handler.Callback;
@@ -26,13 +30,15 @@ implements LoaderManager.LoaderCallbacks<List<PUPIPost>>, Callback{
 
 	private final double PURDUE_LATITUDE=40.427796;
 	private final double PURDUE_LONGITUDE=-86.913736;
-	private final int PURDUE_ZOOM_MAGNITUDE=16;
-
+	private final int PURDUE_ZOOM_MAGNITUDE=17;
+	
 	List<PUPIPost> mPosts=null;
 	// The value is the corresponding post of Key marker
 	HashMap<Marker,PUPIPost> markerPostMapping = new HashMap<Marker, PUPIPost>();
 	public Handler mHandler=null;
 
+	private double network_latitude=-888;
+	private double network_longitude=-888;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -55,8 +61,24 @@ implements LoaderManager.LoaderCallbacks<List<PUPIPost>>, Callback{
 			return;
 		}
 		map.setOnMarkerClickListener(new SimpleMarkerListener());
-		LatLng initLoc = new LatLng(PURDUE_LATITUDE,PURDUE_LONGITUDE);
+		
+		/* Use the LocationManager class to obtain locations from network*/
+		LocationManager mlocManager_network = (LocationManager)getActivity().getSystemService(Context.LOCATION_SERVICE);
+		LocationListener mlocListener_network = new MapLocationListener_network();
+		
+		//find location by network
+		mlocManager_network.requestLocationUpdates( LocationManager.NETWORK_PROVIDER, 0, 0, mlocListener_network);
+		
+		LatLng initLoc;
+		if(network_longitude==-888){
+			Log.d("DEBUG","Location load failed");
+			initLoc = new LatLng(PURDUE_LATITUDE,PURDUE_LONGITUDE);
+		}
+		else{
+			initLoc = new LatLng(network_latitude, network_longitude);
+		}
 		map.moveCamera(CameraUpdateFactory.newLatLngZoom(initLoc,PURDUE_ZOOM_MAGNITUDE));
+		
 	}
 
 	public Loader<List<PUPIPost>> onCreateLoader(int id, Bundle args) {
@@ -76,7 +98,7 @@ implements LoaderManager.LoaderCallbacks<List<PUPIPost>>, Callback{
 		if(mPosts!=null){
 			for(PUPIPost p :mPosts){
 				LatLng loc = new LatLng(p.getLocx(),p.getLocy());
-				Marker marker = map.addMarker(new MarkerOptions().position(loc).title(p.getTitle()));
+				Marker marker = map.addMarker(new MarkerOptions().position(loc).title("abc"));
 				markerPostMapping.put(marker, p);
 			}
 		}
@@ -127,5 +149,40 @@ implements LoaderManager.LoaderCallbacks<List<PUPIPost>>, Callback{
 		}
 		return false;
 	}
+	
+	private class MapLocationListener_network implements LocationListener
+	{
+		@Override
+		public void onLocationChanged(Location loc)
+		{
+			
+			loc.getLatitude();
+			loc.getLongitude();
+			
+			network_latitude = loc.getLatitude();
+			network_longitude = loc.getLongitude();
+
+
+		}
+
+		@Override
+		public void onProviderDisabled(String provider)
+		{
+			Toast.makeText(getActivity(), "Network Disabled! please open network.", Toast.LENGTH_SHORT ).show();
+			network_longitude = -888;
+			network_latitude = -888;
+		}
+
+		@Override
+		public void onProviderEnabled(String provider)
+		{
+			Toast.makeText(getActivity(), "Network Enabled!", Toast.LENGTH_SHORT).show();
+		}
+
+		@Override
+		public void onStatusChanged(String provider, int status, Bundle extras)
+		{
+		}
+	}/* End of Class MyLocationListener */
 
 }

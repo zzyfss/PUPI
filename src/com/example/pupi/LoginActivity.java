@@ -136,6 +136,10 @@ public class LoginActivity extends Activity {
 				Toast.makeText(getApplicationContext(), "User Name or Password can't be empty.", Toast.LENGTH_SHORT).show();
 				return;
 			}
+			else if(pwd.length()<6){
+				Toast.makeText(getApplicationContext(), "Minimum password length is 6.", Toast.LENGTH_SHORT).show();
+				return;
+			}
 			else if(!edit_pwd_a.getText().toString().equals(pwd)){
 				Toast.makeText(getApplicationContext(), "Passwords don't match.\n", Toast.LENGTH_SHORT).show();
 				return;

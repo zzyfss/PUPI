@@ -84,10 +84,11 @@ implements LoaderManager.LoaderCallbacks<List<PUPIPost>>, Callback{
 		// Create an empty adapter we will use to display the loaded data.
 		if(!isResumed()){
 			setListAdapter(mAdapter);
-
+			Log.d("DEBUG","isNotResumed");
 			// Start out with a progress indicator.
 			setListShown(false);
 		}
+
 
 		ListView lv = getListView();
 		lv.setOnItemClickListener(new OnItemClickListener(){
